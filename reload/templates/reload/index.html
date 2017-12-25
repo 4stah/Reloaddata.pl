@@ -1,0 +1,54 @@
+{% extends "reload/base.html" %}
+{% load i18n static %}
+{% load i18n %}
+
+{% block content_title %}
+<p style="float: right;color:#417690;";> {% trans 'Mamy już: Użytkowników' %} - <strong>{{user_count}}</strong>, {% trans 'Elaboracji' %} - <strong>{{loads_count}}</strong></p>
+
+<h1>{% trans 'Baza naszych elaboracji - budujemy pierwszą w Polsce' %} </h1> {% endblock %}
+
+{% block content %}
+
+{% blocktrans %}
+Z założenia projekt ma gromadzić udane "przepisy" - obecnie rozsiane po setkach wpisów na forach.</br>
+Co oczywiste - baza będzie tak dobra, jak solidni i skrupulatni bedą jej użytkownicy.</br>
+Zatem czy projekt się powiedzie... zobaczymy.</br></br>
+{% endblocktrans %}
+
+{% blocktrans %}
+<strong>Reguły są proste:</strong>
+<li> wpisujemy tylko własne, sprawdzone elaboracje - żadnych "kolega robił..."! </li>
+<li> wpisujemy komponenty które są do nabycia w Polsce </li>
+<li> nie edytujemy i nie kasujemy wpisów innych - i tak się nie da :) </li>
+<li> jeśli jakąś, własną, elaborację chcecie usunąć - zaznaczcie "przeznaczenie": "delete" </li>
+{% endblocktrans %}
+
+</br>
+
+<!--
+{% blocktrans %}
+<strong><p style="color:green">Nowa wersja 0.17 - 19.12.2017</p></strong>
+<li style="color:green"> Poprawione przekierowania po zalogowaniu </li>
+{% endblocktrans %}
+
+</br>
+/!-->
+
+{% blocktrans %}
+<strong>Krótka instrukcja obsługi: <a style="color:green">nowa!</a></strong> <p></p>
+<p>Wyszukiwanie:</p>
+<li>Zakładka "Co nowego" prezentuje najnowsze pięć elaboracji, komentarzy i testów.</li>
+<li>Tabele mają funkcję sortowania (klikamy na nagłówek).</li>
+<li>Tabele mają funkcję filtrowania (opcja dla posiadaczy kont).</li>
+<li>Wyszukiwanie możliwe jest również poprzez zawężanie zakresu wyników (opcja dla posiadaczy kont):
+    <p style="padding-left:1em">w zakładkach Kalibry, Pociski, Proch - po kliknięciu w wybraną pozycję otrzymamy odpowiednią listę elaboracji.</p></li>
+<p></p><p>Dodawanie / edycja danych:</p>
+<li>Sprawdzamy UWAŻNIE czy na pewno nie ma już w bazie kalibru/pocisku/prochu - jak nie ma, dodajemy (przyciski po prawej stronie na dole). </li>
+<li>Edytowanie własnych wpisów możliwe jest po kliknięciu na ikonę ołówka (dotyczy wszystkich tabel, opcja dla posiadaczy kont)
+    <p style="padding-left:1em">system blokuje możliwość edycji Kalibrów, Pocisków i Prochu - jeśli zostałe one wykorzystane przez innych (niż właściciel) użytkowników.</p></li>
+<li>Po kliknięciu w liczbę Komentarzy/Testów - można dodawać/edytować testy, zdjęcia oraz komentarze (opcja dla posiadaczy kont). </li>
+{% endblocktrans %}
+
+{% endblock %}
+
+

@@ -1,0 +1,18 @@
+{% extends "reload/base.html" %}
+
+
+{% block content %}
+{% load static %}
+
+        <h1>Loads</h1>
+
+
+            {% for loads in object_list %}
+            <table>
+            <tr>{{ loads.powder }}</tr>
+            </table>
+
+            {% endfor %}
+
+
+{% endblock %}

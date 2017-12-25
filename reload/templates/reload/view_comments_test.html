@@ -1,0 +1,44 @@
+{% extends "reload/base.html" %}
+{% load i18n static %}
+
+{% block content_title %} <h1>{{title}}</h1>{% endblock %}
+{% block content %}
+{% load render_table from django_tables2 %}
+
+{% load static %}
+{% render_table table %}
+
+ <h1>Testy</h1>
+{% render_table table_test %}
+
+
+ <h1>{% trans 'Komentarze' %}</h1>
+{% render_table table_comment %}
+
+ <h1>{% trans 'Nowy komentarz' %}</h1>
+
+
+<form method="POST"> {% csrf_token %}
+<table>
+        {{ form }}
+</table>
+
+    {% if user.is_anonymous %}
+    <p style="color:red";> {% trans 'Nie masz uprawniń do modyfikacji.' %}</p>
+    {% endif %}
+
+<div class="submit-row">
+    {% if not user.is_anonymous %}
+        <input type="submit" value="{% trans 'Zapisz komentarz' %}">
+        <a href="{% url 'test_new' key=key %}"><input type="button" value="{% trans 'Nowy test' %}" /> </a>
+    {% endif %}
+    <input type="button" value="{% trans 'Powrót' %}" onclick="history.back()">
+</div>
+
+{% if user.is_anonymous %}
+    <div class="submit-row">
+        <p align="center"; style="color:red";> {% trans 'Aby dodawać nowe dane -  musisz się zalogować.' %}</p>
+    </div>
+{% endif %}
+
+{% endblock %}

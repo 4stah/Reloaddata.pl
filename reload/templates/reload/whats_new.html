@@ -1,0 +1,36 @@
+{% extends "reload/base.html" %}
+{% load i18n static %}
+
+{% block content_title %}
+<!-- <h1>{{title}}</h1> /!-->
+<h2><p align="center"; style="color:red";> {% trans 'Pamiętaj, elaborujesz na własną odpowiedzialność! Poniższe dane nie zwalniają z myślenia.' %}</p></h2>
+{% endblock %}
+
+{% block content %}
+{% load render_table from django_tables2 %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% if filter %}
+{% if not user.is_anonymous %}
+    <form action="" method="get" class="form form-inline" onchange="this.form.submit()" style="disabled">
+        {% bootstrap_form filter.form %}
+        {% bootstrap_button 'Filtruj' %}
+    </form>
+{% else %}
+<p align="center"; style="color:gray"> <i>Filtrowanie dostępne dla zalogowanych użytkowników.</i> </p>
+{% endif %}
+{% endif %}
+
+<h1>{% trans 'Ostatnio dodane elaboracje' %}</h1>
+{% render_table table_l 'reload/bootstrap.html' %}
+<h1>{% trans 'Ostatnio dodane testy' %} </h1>
+{% render_table table_t 'reload/bootstrap.html' %}
+<h1>{% trans 'Ostatnio dodane komentarze' %}</h1>
+{% render_table table_c 'reload/bootstrap.html' %}
+
+<div class="submit-row">
+        <input type="button" value="{% trans 'Powrót' %}"  onclick="history.back()">
+</div>
+
+{% endblock %}

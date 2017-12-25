@@ -1,0 +1,72 @@
+{% extends "reload/base.html" %}
+{% load i18n static %}
+
+{% block extrastyle %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{% static "admin/css/login.css" %}" />
+{{ form.media }}
+{% endblock %}
+
+{% block title %}{{ title }}{% endblock %}
+{% block usertools %}{% endblock %}
+{% block nav-global %}{% endblock %}
+{% block breadcrumbs %}{% endblock %}
+
+
+{% block content %}
+{% blocktrans %}
+<strong><p> Rejestrując się, zobowiązuję się do:</p></strong>
+<li> czynnego uczestnictwa w rozwoju tej Bazy tj. m.in. dokonania co najmniej jednego wpisu o jakim mowa poniżej w ciągu 3 dni od daty rejestracji.</li>
+<li> podawania nazw i parametrów komponentów w pełnej zgodności ze stanem faktycznym</li>
+<li> nie duplikowania wpisów dot. komponentów i elaborcji</li>
+<li> podawania danych elaboracyjnych, <a style="color:red">OSOBIŚCIE</a> sprawdzonych</li>
+</br></br>
+<a style="color:red">UWAGA:</a> <strong>nazwa użytkownika</strong> powinna być taka sama jak na portalu elaboracja.pl lub forum-bron.pl</a></br></br>
+{% endblocktrans %}
+
+<form method='post'>
+    {% csrf_token %}
+    {% if form.errors %}
+    <p class="errornote">
+        {% if form.errors.items|length == 1 %}
+        {% trans "Please correct the error below." %}
+        {% else %}
+        {% trans "Please correct the errors below." %}
+        {% endif %}
+    </p>
+    {% endif %}
+
+    <fieldset class="module aligned wide">
+        <div class="form-row">
+            {{ form.username.errors }}
+            {{ form.username.label_tag }}{{ form.username }}
+            {% if form.username.help_text %}
+            <div class="help">{{ form.username.help_text|safe }}</div>
+            {% endif %}
+        </div>
+        <div class="form-row">
+            {{ form.errors }}
+            {{ form.email.label_tag }}{{ form.email }}
+            {% if form.email.help_text %}
+            <div class="help">{{ form.email.help_text|safe }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            {{ form.password1.errors }}
+            {{ form.password1.label_tag }}{{ form.password1 }}
+            {% if form.password1.help_text %}
+            <div class="help">{{ form.password1.help_text|safe }}</div>
+            {% endif %}
+        </div>
+
+        <div class="form-row">
+            {{ form.password2.errors }}
+            {{ form.password2.label_tag }} {{ form.password2 }}
+            {% if form.new_password2.help_text %}
+            <div class="help">{{ form.password2.help_text|safe }}</div>
+            {% endif %}
+        </div>
+    </fieldset>
+    <input type="submit" value="{% trans 'Rejestruj i zaloguj' %}"/>
+</form>
+{% endblock %}

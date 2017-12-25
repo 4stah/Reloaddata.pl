@@ -1,0 +1,530 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <stah@reloaddata.pl>, 2017.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-23 18:11+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: reload/forms.py:72
+msgid "Email adres"
+msgstr "Email adres"
+
+#: reload/forms.py:72
+msgid "Wymagane do odzyskania hasla."
+msgstr "Required for password recovery"
+
+#: reload/models.py:10 reload/models.py:41 reload/models.py:76
+msgid "Kaliber"
+msgstr "Caliber"
+
+#: reload/models.py:11 reload/models.py:27 reload/models.py:48
+#: reload/models.py:98 reload/tables.py:48 reload/tables.py:67
+msgid "Komentarz"
+msgstr "Comment"
+
+#: reload/models.py:12 reload/models.py:28 reload/models.py:49
+#: reload/models.py:87 reload/models.py:100 reload/models.py:117
+msgid "Właściciel"
+msgstr "Owner"
+
+#: reload/models.py:13 reload/models.py:29 reload/models.py:50
+#: reload/models.py:74 reload/models.py:95 reload/models.py:108
+#: reload/tables.py:46 reload/tables.py:65
+msgid "Data"
+msgstr "Date"
+
+#: reload/models.py:14 reload/models.py:30 reload/models.py:51
+#: reload/models.py:75 reload/models.py:96 reload/models.py:109
+msgid "Data Mod."
+msgstr "Date Mod."
+
+#: reload/models.py:25 reload/models.py:42
+msgid "Producent"
+msgstr "Vendor"
+
+#: reload/models.py:26 reload/models.py:79 reload/templates/reload/base.html:89
+msgid "Proch"
+msgstr "Powders"
+
+#: reload/models.py:43 reload/models.py:78
+msgid "Pocisk"
+msgstr "Bullet"
+
+#: reload/models.py:44
+msgid "Waga [gr]"
+msgstr "Weight [gr]"
+
+#: reload/models.py:45
+msgid "Kalibracja [in]"
+msgstr "Calibration [in]"
+
+#: reload/models.py:46
+msgid "Długość [mm]"
+msgstr "Lenght"
+
+#: reload/models.py:47
+msgid "BC"
+msgstr "BC"
+
+#: reload/models.py:61 reload/models.py:85
+msgid "Przeznaczenie"
+msgstr "Purpose"
+
+#: reload/models.py:69 reload/models.py:99
+msgid "Ocena"
+msgstr "Score"
+
+#: reload/models.py:77 reload/models.py:97 reload/models.py:110
+msgid "Broń"
+msgstr "Weapon"
+
+#: reload/models.py:80
+msgid "COL [mm]"
+msgstr "COL [mm]"
+
+#: reload/models.py:81
+msgid "Naważka [gr]"
+msgstr "Load [gr]"
+
+#: reload/models.py:82
+msgid "Crimp [mm]"
+msgstr "Crimp [mm]"
+
+#: reload/models.py:83
+msgid "Spłonka"
+msgstr "Prime"
+
+#: reload/models.py:84
+msgid "Łuska"
+msgstr "Case"
+
+#: reload/models.py:86
+msgid "Głosy"
+msgstr "Votes"
+
+#: reload/models.py:94 reload/models.py:107
+msgid "Elaboracja"
+msgstr "Reload"
+
+#: reload/models.py:111
+msgid "V0 (QL) [m/s]"
+msgstr ""
+
+#: reload/models.py:112
+msgid "V0 (chrono) [m/s]"
+msgstr ""
+
+#: reload/models.py:113
+msgid "Temp. [C]"
+msgstr ""
+
+#: reload/models.py:114
+msgid "Grupa [MOA]"
+msgstr "Group [MOA]"
+
+#: reload/models.py:115
+msgid "Opis"
+msgstr "Description"
+
+#: reload/models.py:116
+msgid "Zdjęcie"
+msgstr "Photo"
+
+#: reload/tables.py:15
+msgid "Komentarze / Testy"
+msgstr "Comments / Tests"
+
+#: reload/tables.py:90 reload/tables.py:117 reload/tables.py:138
+#: reload/templates/reload/index.html:6
+msgid "Elaboracji"
+msgstr "Reloads"
+
+#: reload/templates/reload/base.html:33
+msgid "- baza elaboracji"
+msgstr " - reloading database"
+
+#: reload/templates/reload/base.html:48
+msgid "Witam,"
+msgstr "Welcome,"
+
+#: reload/templates/reload/base.html:51
+msgid "Gościa"
+msgstr "Guest"
+
+#: reload/templates/reload/base.html:51
+msgid "Proszę się"
+msgstr "Please"
+
+#: reload/templates/reload/base.html:58
+msgid "View site"
+msgstr "View site"
+
+#: reload/templates/reload/base.html:62
+msgid "Zalogować"
+msgstr "Login"
+
+#: reload/templates/reload/base.html:63
+msgid "lub"
+msgstr "or"
+
+#: reload/templates/reload/base.html:64
+msgid "Zarejestrować"
+msgstr "Register"
+
+#: reload/templates/reload/base.html:68
+msgid "Zmiana hasła"
+msgstr "Change password"
+
+#: reload/templates/reload/base.html:72
+msgid "Wyloguj"
+msgstr "Logout"
+
+#: reload/templates/reload/base.html:84
+msgid "Start"
+msgstr "Start"
+
+#: reload/templates/reload/base.html:85 reload/views.py:292
+msgid "Co nowego"
+msgstr "What's new"
+
+#: reload/templates/reload/base.html:86
+msgid "Elaboracje"
+msgstr "Reloads"
+
+#: reload/templates/reload/base.html:87
+msgid "Kalibry"
+msgstr "Calibers"
+
+#: reload/templates/reload/base.html:88
+msgid "Pociski"
+msgstr "Bullets"
+
+#: reload/templates/reload/bootstrap.html:66
+msgid "poprzednia"
+msgstr "previous"
+
+#: reload/templates/reload/bootstrap.html:87
+#, python-format
+msgid " strona %(current)s z %(total)s"
+msgstr "page %(current)s from %(total)s"
+
+#: reload/templates/reload/bootstrap.html:95
+msgid "następna"
+msgstr "next"
+
+#: reload/templates/reload/create_user.html:16
+msgid ""
+"\n"
+"<strong><p> Rejestrując się, zobowiązuję się do:</p></strong>\n"
+"<li> czynnego uczestnictwa w rozwoju tej Bazy tj. m.in. dokonania co "
+"najmniej jednego wpisu o jakim mowa poniżej w ciągu 3 dni od daty "
+"rejestracji.</li>\n"
+"<li> podawania nazw i parametrów komponentów w pełnej zgodności ze stanem "
+"faktycznym</li>\n"
+"<li> nie duplikowania wpisów dot. komponentów i elaborcji</li>\n"
+"<li> podawania danych elaboracyjnych, <a style=\"color:red\">OSOBIŚCIE</a> "
+"sprawdzonych</li>\n"
+"</br></br>\n"
+"<a style=\"color:red\">UWAGA:</a> <strong>nazwa użytkownika</strong> powinna "
+"być taka sama jak na portalu elaboracja.pl lub forum-bron.pl</a></br></br>\n"
+msgstr ""
+"\n"
+"<strong> <p> By registering, I agree to: </p> </strong> \n"
+"<li> active participation in the development of this base, i.e. (among "
+"others) - add at least one new reload entry, within 3 days</li> \n"
+"<li> provide names and parameter parameters in full compliance with the "
+"facts </li> \n"
+"<li> do not duplicate entries for components and reloads </li> \n"
+"<li> giving reloading data only <a style=\"color:red\"> PERSONALLY </a> "
+"checked </li> \n"
+
+#: reload/templates/reload/create_user.html:31
+#: reload/templates/reload/login.html:22
+#: reload/templates/reload/password_change.html:15
+msgid "Please correct the error below."
+msgstr ""
+
+#: reload/templates/reload/create_user.html:33
+#: reload/templates/reload/login.html:22
+#: reload/templates/reload/password_change.html:15
+msgid "Please correct the errors below."
+msgstr ""
+
+#: reload/templates/reload/create_user.html:70
+msgid "Rejestruj i zaloguj"
+msgstr "Register and Log in"
+
+#: reload/templates/reload/edit.html:17
+msgid "Niem masz uprawniń do modyfikacji."
+msgstr "You are not allowed to edit this data."
+
+#: reload/templates/reload/edit.html:22
+msgid "Zapisz"
+msgstr "Save"
+
+#: reload/templates/reload/edit.html:24
+#: reload/templates/reload/view_comments_test.html:35
+#: reload/templates/reload/whats_new.html:33
+msgid "Powrót"
+msgstr "Back"
+
+#: reload/templates/reload/index.html:6
+msgid "Mamy już: Użytkowników"
+msgstr "We have: Users"
+
+#: reload/templates/reload/index.html:8
+msgid "Baza naszych elaboracji - budujemy pierwszą w Polsce"
+msgstr "Our Reloading Database"
+
+#: reload/templates/reload/index.html:12
+msgid ""
+"\n"
+"Z założenia projekt ma gromadzić udane \"przepisy\" - obecnie rozsiane po "
+"setkach wpisów na forach.</br>\n"
+"Co oczywiste - baza będzie tak dobra, jak solidni i skrupulatni bedą jej "
+"użytkownicy.</br>\n"
+"Zatem czy projekt się powiedzie... zobaczymy.</br></br>\n"
+msgstr ""
+"\n"
+"The project is designed to gather successful \"recipes\" - currently "
+"scattered over hundreds of forums entries.</br>\n"
+"Obviously - the database will be as good as its users will be solid and "
+"meticulous.</br>\n"
+"So whether the project will succeed ... we will see.</br></br>\n"
+
+#: reload/templates/reload/index.html:18
+msgid ""
+"\n"
+"<strong>Reguły są proste:</strong>\n"
+"<li> wpisujemy tylko własne, sprawdzone elaboracje - żadnych \"kolega "
+"robił...\"! </li>\n"
+"<li> wpisujemy komponenty które są do nabycia w Polsce </li>\n"
+"<li> nie edytujemy i nie kasujemy wpisów innych - i tak się nie da :) </li>\n"
+"<li> jeśli jakąś, własną, elaborację chcecie usunąć - zaznaczcie "
+"\"przeznaczenie\": \"delete\" </li>\n"
+msgstr ""
+"\n"
+"<strong> The rules are simple: </strong> \n"
+"<li> only enter your own, tested elaborations - no \"my friend did it ...\"! "
+"</li> \n"
+" <li> enter components that are available in EU </li> \n"
+"<li> we do not edit and we do not delete other entries - and that's not "
+"possible :) </li> \n"
+"<li> if you want to delete some of your own elaboration - mark it \" purpose "
+"\": \" _delete_ \"</li> \n"
+
+#: reload/templates/reload/index.html:29
+msgid ""
+"\n"
+"<strong><p style=\"color:green\">Nowa wersja 0.17 - 19.12.2017</p></strong>\n"
+"<li style=\"color:green\"> Poprawione przekierowania po zalogowaniu </li>\n"
+msgstr ""
+
+#: reload/templates/reload/index.html:37
+msgid ""
+"\n"
+"<strong>Krótka instrukcja obsługi: <a style=\"color:green\">nowa!</a></"
+"strong> <p></p>\n"
+"<p>Wyszukiwanie:</p>\n"
+"<li>Zakładka \"Co nowego\" prezentuje najnowsze pięć elaboracji, komentarzy "
+"i testów.</li>\n"
+"<li>Tabele mają funkcję sortowania (klikamy na nagłówek).</li>\n"
+"<li>Tabele mają funkcję filtrowania (opcja dla posiadaczy kont).</li>\n"
+"<li>Wyszukiwanie możliwe jest również poprzez zawężanie zakresu wyników "
+"(opcja dla posiadaczy kont):\n"
+"    <p style=\"padding-left:1em\">w zakładkach Kalibry, Pociski, Proch - po "
+"kliknięciu w wybraną pozycję otrzymamy odpowiednią listę elaboracji.</p></"
+"li>\n"
+"<p></p><p>Dodawanie / edycja danych:</p>\n"
+"<li>Sprawdzamy UWAŻNIE czy na pewno nie ma już w bazie kalibru/pocisku/"
+"prochu - jak nie ma, dodajemy (przyciski po prawej stronie na dole). </li>\n"
+"<li>Edytowanie własnych wpisów możliwe jest po kliknięciu na ikonę ołówka "
+"(dotyczy wszystkich tabel, opcja dla posiadaczy kont)\n"
+"    <p style=\"padding-left:1em\">system blokuje możliwość edycji Kalibrów, "
+"Pocisków i Prochu - jeśli zostałe one wykorzystane przez innych (niż "
+"właściciel) użytkowników.</p></li>\n"
+"<li>Po kliknięciu w liczbę Komentarzy/Testów - można dodawać/edytować testy, "
+"zdjęcia oraz komentarze (opcja dla posiadaczy kont). </li>\n"
+msgstr ""
+"\n"
+"<strong> A brief instruction: <a style=\"color:green\"> new! </a> </strong> "
+"<p> </p> \n"
+"\n"
+"<P> Search: </p> \n"
+"<li> The tab \" What's new \" presents the latest five reloads, comments and "
+"tests. </li> \n"
+"<li> The tables have a sort function (click on the heading). </li> \n"
+"<li> The tables have a filtering function (option for registered users). </"
+"li> \n"
+"<li> Searching is also possible by narrowing the range of results (option "
+"for registered users): \n"
+"<p style = \" padding-left: 1em \"> in the tabs Caliber, Bullets, Powder - "
+"after clicking on the selected item, we will get a corresponding list of "
+"reloads. </p> </li> \n"
+"\n"
+"<p> </p> <p> Add / edit data: </p> \n"
+"<li> First, check CAREFULLY if it is not already in the base of caliber / "
+"bullets / powder - if it is not, we can add it (buttons on the right side at "
+"the bottom). </li> \n"
+"<li> Editing your own entries is possible after clicking on the pencil icon "
+"(applies to all tables, option for registered users only) \n"
+"<p style = \" padding-left: 1em \"> the system blocks the ability to edit "
+"calibers, bullets and powders - if they have been used by others (than the "
+"owner). </p> </li> \n"
+"<li> After clicking on the number of Comments / Tests - you can add / edit "
+"tests, target photos and comments (option for registered users). </li> \n"
+
+#: reload/templates/reload/view.html:6 reload/templates/reload/whats_new.html:6
+msgid ""
+"Pamiętaj, elaborujesz na własną odpowiedzialność! Poniższe dane nie "
+"zwalniają z myślenia."
+msgstr ""
+"Remember, you are reloading at your own risk. This data does not relieve you "
+"from thinking."
+
+#: reload/templates/reload/view.html:24
+msgid "Filtrowanie dostępne dla zalogowanych użytkowników."
+msgstr "Table filtering avilable for loggedin users."
+
+#: reload/templates/reload/view.html:36
+msgid "Nowa elaboracja"
+msgstr "New reload"
+
+#: reload/templates/reload/view.html:37
+msgid "Nowy kaliber"
+msgstr "New caliber"
+
+#: reload/templates/reload/view.html:38
+msgid "Nowy pocisk"
+msgstr "New bullet"
+
+#: reload/templates/reload/view.html:39
+msgid "Nowy proch"
+msgstr "New powder"
+
+#: reload/templates/reload/view.html:45
+#: reload/templates/reload/view_comments_test.html:40
+msgid "Aby dodawać nowe dane -  musisz się zalogować."
+msgstr "To add / edit data - login, please."
+
+#: reload/templates/reload/view_comments_test.html:15
+msgid "Komentarze"
+msgstr "Comments"
+
+#: reload/templates/reload/view_comments_test.html:18
+msgid "Nowy komentarz"
+msgstr "New comment"
+
+#: reload/templates/reload/view_comments_test.html:27
+msgid "Nie masz uprawniń do modyfikacji."
+msgstr "You are not allowed to edit this data."
+
+#: reload/templates/reload/view_comments_test.html:32
+msgid "Zapisz komentarz"
+msgstr "Save comment"
+
+#: reload/templates/reload/view_comments_test.html:33
+msgid "Nowy test"
+msgstr "New test"
+
+#: reload/templates/reload/whats_new.html:25
+msgid "Ostatnio dodane elaboracje"
+msgstr "Recently added reloads"
+
+#: reload/templates/reload/whats_new.html:27
+msgid "Ostatnio dodane testy"
+msgstr "Recently added reload tests"
+
+#: reload/templates/reload/whats_new.html:29
+msgid "Ostatnio dodane komentarze"
+msgstr "Recently added comments"
+
+#: reload/views.py:36
+msgid "Baza elaboracji"
+msgstr "Reload database"
+
+#: reload/views.py:52
+msgid "Baza pocisków"
+msgstr "Bullet database"
+
+#: reload/views.py:63
+msgid "Baza prochu"
+msgstr "Powder database"
+
+#: reload/views.py:154
+msgid "Rejestracja"
+msgstr "Register"
+
+#: reload/views.py:182 reload/views.py:198
+msgid "Edycja elaboracji"
+msgstr "Reload edit"
+
+#: reload/views.py:214
+msgid "Edycja komentarza"
+msgstr "Comment edit"
+
+#: reload/views.py:243
+msgid "Szczegóły elaboracji"
+msgstr "Details"
+
+#: reload/views.py:261 reload/views.py:277
+msgid "Edycja testu"
+msgstr "Test edit"
+
+#: reload/views.py:302
+msgid "Kaliber: "
+msgstr "Caliber: "
+
+#: reload/views.py:309
+msgid "Pocisk: "
+msgstr "Bullet: "
+
+#: reload/views.py:316
+msgid "Proch: "
+msgstr "Powder: "
+
+#: reload/views.py:339 reload/views.py:360
+msgid "Edycja prochu"
+msgstr "Powder edit"
+
+#: reload/views.py:382 reload/views.py:404
+msgid "Edycja pocisku"
+msgstr "Bullet edit"
+
+#: reload/views.py:426 reload/views.py:448
+msgid "Edycja kalibru"
+msgstr "Caliber edit"
+
+
+msgid "Polowanie"
+msgstr "Hunting"
+
+msgid "Obrona"
+msgstr "Defence"
+
+msgid "Dynamika"
+msgstr "Dynamic"
+
+msgid "Testowa"
+msgstr "Testing"
+
+msgid "! do skasowania !"
+msgstr "! delete !"
+
+msgid "Pozytywna"
+msgstr "Positive"
+
+msgid "Neutralna"
+msgstr "Neutral"
+
+msgid "Negatywna"
+msgstr "Negative"
