@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-23 18:11+0100\n"
+"POT-Creation-Date: 2017-12-27 09:30+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -239,24 +239,18 @@ msgid ""
 msgstr ""
 "\n"
 "<strong> <p> By registering, I agree to: </p> </strong> \n"
-"<li> active participation in the development of this base, i.e. (among "
-"others) - add at least one new reload entry, within 3 days</li> \n"
-"<li> provide names and parameter parameters in full compliance with the "
-"facts </li> \n"
+"<li> active participation in the development of this database, i.e. - add at "
+"least one new reload entry, within 3 days</li> \n"
+"<li> provide names and parameters in full compliance with the reality </"
+"li> \n"
 "<li> do not duplicate entries for components and reloads </li> \n"
 "<li> giving reloading data only <a style=\"color:red\"> PERSONALLY </a> "
 "checked </li> \n"
 
 #: reload/templates/reload/create_user.html:31
-#: reload/templates/reload/login.html:22
+#: reload/templates/reload/login.html:18
 #: reload/templates/reload/password_change.html:15
 msgid "Please correct the error below."
-msgstr ""
-
-#: reload/templates/reload/create_user.html:33
-#: reload/templates/reload/login.html:22
-#: reload/templates/reload/password_change.html:15
-msgid "Please correct the errors below."
 msgstr ""
 
 #: reload/templates/reload/create_user.html:70
@@ -308,7 +302,8 @@ msgid ""
 "<li> wpisujemy tylko własne, sprawdzone elaboracje - żadnych \"kolega "
 "robił...\"! </li>\n"
 "<li> wpisujemy komponenty które są do nabycia w Polsce </li>\n"
-"<li> nie edytujemy i nie kasujemy wpisów innych - i tak się nie da :) </li>\n"
+"<li> edytować można jedynie własne wpisy, aczkolwiek można dodawać "
+"komentarze i testy do wszystkich elaboracji</li>\n"
 "<li> jeśli jakąś, własną, elaborację chcecie usunąć - zaznaczcie "
 "\"przeznaczenie\": \"delete\" </li>\n"
 msgstr ""
@@ -317,8 +312,8 @@ msgstr ""
 "<li> only enter your own, tested elaborations - no \"my friend did it ...\"! "
 "</li> \n"
 " <li> enter components that are available in EU </li> \n"
-"<li> we do not edit and we do not delete other entries - and that's not "
-"possible :) </li> \n"
+"<li> you can edit only your data, but you can add comments and tests to "
+"others reloading entries</li> \n"
 "<li> if you want to delete some of your own elaboration - mark it \" purpose "
 "\": \" _delete_ \"</li> \n"
 
@@ -372,9 +367,8 @@ msgstr ""
 "reloads. </p> </li> \n"
 "\n"
 "<p> </p> <p> Add / edit data: </p> \n"
-"<li> First, check CAREFULLY if it is not already in the base of caliber / "
-"bullets / powder - if it is not, we can add it (buttons on the right side at "
-"the bottom). </li> \n"
+"<li> First, check CAREFULLY if your component data does not exists in the "
+"database (calibers / bullets / powder) - if not, add it please. </li> \n"
 "<li> Editing your own entries is possible after clicking on the pencil icon "
 "(applies to all tables, option for registered users only) \n"
 "<p style = \" padding-left: 1em \"> the system blocks the ability to edit "
@@ -382,6 +376,120 @@ msgstr ""
 "owner). </p> </li> \n"
 "<li> After clicking on the number of Comments / Tests - you can add / edit "
 "tests, target photos and comments (option for registered users). </li> \n"
+
+#: reload/templates/reload/logged_out.html:6
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+#: reload/templates/reload/logged_out.html:8
+msgid "Log in again"
+msgstr ""
+
+#: reload/templates/reload/login.html:35
+#, python-format
+msgid ""
+"You are authenticated as %(username)s, but are not authorized to access this "
+"page. Would you like to login to a different account?"
+msgstr ""
+
+#: reload/templates/reload/login.html:54
+#: reload/templates/reload/password_reset_complete.html:11
+msgid "Log in"
+msgstr ""
+
+#: reload/templates/reload/login.html:60
+msgid "Forgotten your password or username?"
+msgstr ""
+
+#: reload/templates/reload/password_change.html:20
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr ""
+
+#: reload/templates/reload/password_change.html:56
+#: reload/templates/reload/password_reset_confirm.html:26
+msgid "Change my password"
+msgstr ""
+
+#: reload/templates/reload/password_reset.html:10
+msgid ""
+"Forgotten your password? Enter your email address below, and we'll email "
+"instructions for setting a new one."
+msgstr ""
+
+#: reload/templates/reload/password_reset.html:16
+msgid "Email address:"
+msgstr ""
+
+#: reload/templates/reload/password_reset.html:19
+msgid "Reset my password"
+msgstr ""
+
+#: reload/templates/reload/password_reset_complete.html:9
+msgid "Your password has been set.  You may go ahead and log in now."
+msgstr ""
+
+#: reload/templates/reload/password_reset_confirm.html:12
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr ""
+
+#: reload/templates/reload/password_reset_confirm.html:18
+msgid "New password:"
+msgstr ""
+
+#: reload/templates/reload/password_reset_confirm.html:23
+msgid "Confirm password:"
+msgstr ""
+
+#: reload/templates/reload/password_reset_confirm.html:32
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+
+#: reload/templates/reload/password_reset_done.html:8
+msgid ""
+"We've emailed you instructions for setting your password, if an account "
+"exists with the email you entered. You should receive them shortly."
+msgstr ""
+
+#: reload/templates/reload/password_reset_done.html:10
+msgid ""
+"If you don't receive an email, please make sure you've entered the address "
+"you registered with, and check your spam folder."
+msgstr ""
+
+#: reload/templates/reload/password_reset_email.html:2
+#, python-format
+msgid ""
+"You're receiving this email because you requested a password reset for your "
+"user account at %(site_name)s."
+msgstr ""
+
+#: reload/templates/reload/password_reset_email.html:4
+msgid "Please go to the following page and choose a new password:"
+msgstr ""
+
+#: reload/templates/reload/password_reset_email.html:8
+msgid "Your username, in case you've forgotten:"
+msgstr ""
+
+#: reload/templates/reload/password_reset_email.html:10
+msgid "Thanks for using our site!"
+msgstr ""
+
+#: reload/templates/reload/password_reset_email.html:12
+#, python-format
+msgid "The %(site_name)s team"
+msgstr ""
+
+#: reload/templates/reload/password_reset_subject.txt:2
+#, python-format
+msgid "Password reset on %(site_name)s"
+msgstr ""
 
 #: reload/templates/reload/view.html:6 reload/templates/reload/whats_new.html:6
 msgid ""
@@ -503,7 +611,6 @@ msgstr "Bullet edit"
 #: reload/views.py:426 reload/views.py:448
 msgid "Edycja kalibru"
 msgstr "Caliber edit"
-
 
 msgid "Polowanie"
 msgstr "Hunting"
