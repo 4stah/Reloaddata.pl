@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-29 11:34+0100\n"
+"POT-Creation-Date: 2017-12-29 20:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgid "Email"
 msgstr "Email"
 
 #: reload/forms.py:81
-msgid "Wymagane do odzyskania hasla."
+msgid "Wymagane do odzyskania hasła."
 msgstr "Required for password recovery"
 
 #: reload/forms.py:114
@@ -32,7 +32,7 @@ msgstr "Message"
 
 #: reload/models.py:10 reload/models.py:41 reload/models.py:76
 msgid "Kaliber"
-msgstr "Caliber"
+msgstr "Calibre"
 
 #: reload/models.py:11 reload/models.py:27 reload/models.py:48
 #: reload/models.py:98 reload/tables.py:48 reload/tables.py:67
@@ -53,15 +53,15 @@ msgstr "Date"
 #: reload/models.py:14 reload/models.py:30 reload/models.py:51
 #: reload/models.py:75 reload/models.py:96 reload/models.py:109
 msgid "Data Mod."
-msgstr "Date Mod."
+msgstr "Mod. Date"
 
 #: reload/models.py:25 reload/models.py:42
 msgid "Producent"
 msgstr "Vendor"
 
-#: reload/models.py:26 reload/models.py:79 reload/templates/reload/base.html:89
+#: reload/models.py:26 reload/models.py:79 reload/templates/reload/base.html:90
 msgid "Proch"
-msgstr "Powders"
+msgstr "Powder"
 
 #: reload/models.py:43 reload/models.py:78
 msgid "Pocisk"
@@ -77,7 +77,7 @@ msgstr "Calibration [in]"
 
 #: reload/models.py:46
 msgid "Długość [mm]"
-msgstr "Lenght"
+msgstr "Length"
 
 #: reload/models.py:47
 msgid "BC"
@@ -196,27 +196,27 @@ msgstr "Change password"
 msgid "Wyloguj"
 msgstr "Logout"
 
-#: reload/templates/reload/base.html:84
+#: reload/templates/reload/base.html:85
 msgid "Start"
 msgstr "Start"
 
-#: reload/templates/reload/base.html:85 reload/views.py:307
+#: reload/templates/reload/base.html:86 reload/views.py:307
 msgid "Co nowego"
 msgstr "What's new"
 
-#: reload/templates/reload/base.html:86
+#: reload/templates/reload/base.html:87
 msgid "Elaboracje"
 msgstr "Reloads"
 
-#: reload/templates/reload/base.html:87
-msgid "Kalibry"
-msgstr "Calibers"
-
 #: reload/templates/reload/base.html:88
+msgid "Kalibry"
+msgstr "Calibres"
+
+#: reload/templates/reload/base.html:89
 msgid "Pociski"
 msgstr "Bullets"
 
-#: reload/templates/reload/base.html:90
+#: reload/templates/reload/base.html:100
 msgid "Kontakt"
 msgstr "Contact"
 
@@ -257,7 +257,7 @@ msgstr "Email:"
 
 #: reload/templates/reload/contact_message.txt:5
 msgid "Treść wiadomości:"
-msgstr "Message:"
+msgstr "Message body:"
 
 #: reload/templates/reload/contact_sent.html:8
 msgid "Wiadomość została wysłana."
@@ -285,12 +285,12 @@ msgid ""
 msgstr ""
 "\n"
 "<strong> <p> By registering, I agree to: </p> </strong> \n"
-"<li> active participation in the development of this database, i.e. - add at "
-"least one new reload entry, within 3 days</li> \n"
+"<li> actively participate in the development of this database, i.e. – I will "
+"add at least one new reload entry, within 3 days</li> \n"
 "<li> provide names and parameters in full compliance with the reality </"
 "li> \n"
 "<li> do not duplicate entries for components and reloads </li> \n"
-"<li> giving reloading data only <a style=\"color:red\"> PERSONALLY </a> "
+"<li> givie reloading data only <a style=\"color:red\"> PERSONALLY </a> "
 "checked </li> \n"
 
 #: reload/templates/reload/create_user.html:31
@@ -307,7 +307,7 @@ msgstr ""
 
 #: reload/templates/reload/create_user.html:70
 msgid "Rejestruj i zaloguj"
-msgstr "Register and Log in"
+msgstr "Register and Login"
 
 #: reload/templates/reload/dictionaries.txt:6
 msgid "Polowanie"
@@ -327,7 +327,7 @@ msgstr "Testing"
 
 #: reload/templates/reload/dictionaries.txt:10
 msgid "! do skasowania !"
-msgstr "! delete !"
+msgstr "! to be deleted !"
 
 #: reload/templates/reload/dictionaries.txt:12
 msgid "Pozytywna"
@@ -342,7 +342,7 @@ msgid "Negatywna"
 msgstr "Negative"
 
 #: reload/templates/reload/edit.html:17
-msgid "Niem masz uprawniń do modyfikacji."
+msgid "Niem masz uprawnień do modyfikacji."
 msgstr "You are not allowed to edit this data."
 
 #: reload/templates/reload/edit.html:22
@@ -423,7 +423,7 @@ msgid ""
 "<li>Edytowanie własnych wpisów możliwe jest po kliknięciu na ikonę ołówka "
 "(dotyczy wszystkich tabel, opcja dla posiadaczy kont)\n"
 "    <p style=\"padding-left:1em\">system blokuje możliwość edycji Kalibrów, "
-"Pocisków i Prochu - jeśli zostałe one wykorzystane przez innych (niż "
+"Pocisków i Prochu - jeśli zostały one wykorzystane przez innych (niż "
 "właściciel) użytkowników.</p></li>\n"
 "<li>Po kliknięciu w liczbę Komentarzy/Testów - można dodawać/edytować testy, "
 "zdjęcia oraz komentarze (opcja dla posiadaczy kont). </li>\n"
@@ -440,17 +440,17 @@ msgstr ""
 "li> \n"
 "<li> Searching is also possible by narrowing the range of results (option "
 "for registered users): \n"
-"<p style = \" padding-left: 1em \"> in the tabs Caliber, Bullets, Powder - "
+"<p style = \" padding-left: 1em \"> in the tabs Calibre, Bullets, Powder - "
 "after clicking on the selected item, we will get a corresponding list of "
 "reloads. </p> </li> \n"
 "\n"
 "<p> </p> <p> Add / edit data: </p> \n"
 "<li> First, check CAREFULLY if your component data does not exists in the "
-"database (calibers / bullets / powder) - if not, add it please. </li> \n"
+"database (calibres / bullets / powder) - if not, add it please. </li> \n"
 "<li> Editing your own entries is possible after clicking on the pencil icon "
 "(applies to all tables, option for registered users only) \n"
 "<p style = \" padding-left: 1em \"> the system blocks the ability to edit "
-"calibers, bullets and powders - if they have been used by others (than the "
+"calibres, bullets and powders - if they have been used by others (than the "
 "owner). </p> </li> \n"
 "<li> After clicking on the number of Comments / Tests - you can add / edit "
 "tests, target photos and comments (option for registered users). </li> \n"
@@ -579,7 +579,7 @@ msgstr ""
 
 #: reload/templates/reload/view.html:24
 msgid "Filtrowanie dostępne dla zalogowanych użytkowników."
-msgstr "Table filtering avilable for loggedin users."
+msgstr "Table filtering available for logged users."
 
 #: reload/templates/reload/view.html:36
 msgid "Nowa elaboracja"
@@ -587,7 +587,7 @@ msgstr "New reload"
 
 #: reload/templates/reload/view.html:37
 msgid "Nowy kaliber"
-msgstr "New caliber"
+msgstr "New calibre"
 
 #: reload/templates/reload/view.html:38
 msgid "Nowy pocisk"
@@ -600,7 +600,7 @@ msgstr "New powder"
 #: reload/templates/reload/view.html:45
 #: reload/templates/reload/view_comments_test.html:40
 msgid "Aby dodawać nowe dane -  musisz się zalogować."
-msgstr "To add / edit data - login, please."
+msgstr "Please login to add / edit data."
 
 #: reload/templates/reload/view_comments_test.html:15
 msgid "Komentarze"
@@ -611,7 +611,7 @@ msgid "Nowy komentarz"
 msgstr "New comment"
 
 #: reload/templates/reload/view_comments_test.html:27
-msgid "Nie masz uprawniń do modyfikacji."
+msgid "Nie masz uprawnień do modyfikacji."
 msgstr "You are not allowed to edit this data."
 
 #: reload/templates/reload/view_comments_test.html:32
@@ -628,7 +628,7 @@ msgstr "Recently added reloads"
 
 #: reload/templates/reload/whats_new.html:27
 msgid "Ostatnio dodane testy"
-msgstr "Recently added reload tests"
+msgstr "Recently added tests"
 
 #: reload/templates/reload/whats_new.html:29
 msgid "Ostatnio dodane komentarze"
@@ -668,7 +668,7 @@ msgstr "Test edit"
 
 #: reload/views.py:317
 msgid "Kaliber: "
-msgstr "Caliber: "
+msgstr "Calibre: "
 
 #: reload/views.py:324
 msgid "Pocisk: "
@@ -688,4 +688,4 @@ msgstr "Bullet edit"
 
 #: reload/views.py:441 reload/views.py:463
 msgid "Edycja kalibru"
-msgstr "Caliber edit"
+msgstr "Calibre edit"
