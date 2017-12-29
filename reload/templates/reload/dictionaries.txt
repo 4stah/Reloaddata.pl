@@ -1,0 +1,14 @@
+# -*- coding: utf-8 -*-
+
+
+# Dane slownikowe do tumaczenia (wymaga użycia _() w _unicode_
+
+{% trans  "Polowanie" %}
+{% trans  "Obrona" %}
+{% trans  "Dynamika" %}
+{% trans  "Testowa" %}
+{% trans  "! do skasowania !" %}
+
+{% trans  "Pozytywna" %}
+{% trans  "Neutralna" %}
+{% trans  "Negatywna" %}

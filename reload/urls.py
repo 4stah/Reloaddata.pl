@@ -1,7 +1,9 @@
 from django.conf.urls import include, url
-from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from django.conf import settings
+from django.views.generic import TemplateView
+
 
 from . import views
 
@@ -11,11 +13,11 @@ urlpatterns = [
     url(r'^loginuser/', views.loginuser, name='loginuser'),
     url(r'^logoutuser/',auth_views.LogoutView.as_view(template_name='reload/logged_out.html'),name='logoutuser'),
 
-    # url(r'^logoutuser/', views.logoutuser, name='logoutuser'),
-
+    url(r'^contact/',views.ContactFormView.as_view(),name='contact'),
+    url(r'^contact_send/',TemplateView.as_view(template_name='reload/contact_sent.html'),name='contact_sent'),
 
     url(r'^password_change/', views.password_change, name='password_change'),
-    url(r'^password_reset/', auth_views.PasswordResetView.as_view(template_name='reload/password_reset.html', from_email='admin@reloaddata.pl'),name='password_reset'),
+    url(r'^password_reset/', auth_views.PasswordResetView.as_view(template_name='reload/password_reset.html', from_email=settings.DEFAULT_FROM_EMAIL),name='password_reset'),
     url(r'^password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='reload/password_reset_done.html'),name='password_reset_done'),
     url(r'^reset/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',auth_views.PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
     url(r'^password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='reload/password_reset_complete.html'),name='password_reset_complete'),

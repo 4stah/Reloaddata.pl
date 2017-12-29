@@ -1,0 +1,9 @@
+{% load i18n %}{% autoescape off %}
+
+{% trans "Kontakt od:" %} {{ name }} {% trans "Email:" %} {{ email }}
+
+{% trans "Treść wiadomości:" %}
+
+{{ body }}
+
+{% endautoescape %}

@@ -101,6 +101,8 @@ EMAIL_HOST_PASSWORD = 'EnterEnter4'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
+DEFAULT_FROM_EMAIL = 'admin@reloaddata.pl'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/
 

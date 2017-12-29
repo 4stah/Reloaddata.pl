@@ -7,21 +7,18 @@
 {% load static %}
 <!doctype html>
 <html>
+<h1>
+{% trans "Wiadomość dla administratora systemu" %}
+</h1>
 
 <form method="POST" enctype="multipart/form-data"> {% csrf_token %}
 <table>
         {{ form }}
 </table>
 
-    {% if user.is_anonymous or not editable %}
-    <p style="color:red";> {% trans 'Niem masz uprawniń do modyfikacji.' %} </p>
-    {% endif %}
-
     <div class="submit-row">
-        {% if not user.is_anonymous and editable %}
-            <input type="submit" value="{% trans 'Zapisz' %}">
-        {% endif %}
-        <input type="button" value="{% trans 'Powrót' %}"  onclick="history.back()">
+      <input type="submit" value="{% trans 'Wyślij' %}">
+      <input type="button" value="{% trans 'Powrót' %}"  onclick="history.back()">
     </div>
 
 </form>

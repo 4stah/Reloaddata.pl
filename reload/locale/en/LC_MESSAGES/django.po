@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-27 09:30+0100\n"
+"POT-Creation-Date: 2017-12-29 11:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,13 +14,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: reload/forms.py:72
-msgid "Email adres"
-msgstr "Email adres"
+#: reload/forms.py:81 reload/forms.py:115
+msgid "Email"
+msgstr "Email"
 
-#: reload/forms.py:72
+#: reload/forms.py:81
 msgid "Wymagane do odzyskania hasla."
 msgstr "Required for password recovery"
+
+#: reload/forms.py:114
+msgid "Imię / Nickname"
+msgstr "Name / Nickname"
+
+#: reload/forms.py:116
+msgid "Wiadomość"
+msgstr "Message"
 
 #: reload/models.py:10 reload/models.py:41 reload/models.py:76
 msgid "Kaliber"
@@ -192,7 +200,7 @@ msgstr "Logout"
 msgid "Start"
 msgstr "Start"
 
-#: reload/templates/reload/base.html:85 reload/views.py:292
+#: reload/templates/reload/base.html:85 reload/views.py:307
 msgid "Co nowego"
 msgstr "What's new"
 
@@ -208,6 +216,10 @@ msgstr "Calibers"
 msgid "Pociski"
 msgstr "Bullets"
 
+#: reload/templates/reload/base.html:90
+msgid "Kontakt"
+msgstr "Contact"
+
 #: reload/templates/reload/bootstrap.html:66
 msgid "poprzednia"
 msgstr "previous"
@@ -220,6 +232,40 @@ msgstr "page %(current)s from %(total)s"
 #: reload/templates/reload/bootstrap.html:95
 msgid "następna"
 msgstr "next"
+
+#: reload/templates/reload/contact.html:11
+msgid "Wiadomość dla administratora systemu"
+msgstr "Message for system administrator"
+
+#: reload/templates/reload/contact.html:20
+msgid "Wyślij"
+msgstr "Send"
+
+#: reload/templates/reload/contact.html:21 reload/templates/reload/edit.html:24
+#: reload/templates/reload/view_comments_test.html:35
+#: reload/templates/reload/whats_new.html:33
+msgid "Powrót"
+msgstr "Back"
+
+#: reload/templates/reload/contact_message.txt:3
+msgid "Kontakt od:"
+msgstr "Contact from:"
+
+#: reload/templates/reload/contact_message.txt:3
+msgid "Email:"
+msgstr "Email:"
+
+#: reload/templates/reload/contact_message.txt:5
+msgid "Treść wiadomości:"
+msgstr "Message:"
+
+#: reload/templates/reload/contact_sent.html:8
+msgid "Wiadomość została wysłana."
+msgstr "Message has been sent."
+
+#: reload/templates/reload/contact_subject.txt:2
+msgid "Kontakt z"
+msgstr "Contact from"
 
 #: reload/templates/reload/create_user.html:16
 msgid ""
@@ -253,9 +299,47 @@ msgstr ""
 msgid "Please correct the error below."
 msgstr ""
 
+#: reload/templates/reload/create_user.html:33
+#: reload/templates/reload/login.html:18
+#: reload/templates/reload/password_change.html:15
+msgid "Please correct the errors below."
+msgstr ""
+
 #: reload/templates/reload/create_user.html:70
 msgid "Rejestruj i zaloguj"
 msgstr "Register and Log in"
+
+#: reload/templates/reload/dictionaries.txt:6
+msgid "Polowanie"
+msgstr "Hunting"
+
+#: reload/templates/reload/dictionaries.txt:7
+msgid "Obrona"
+msgstr "Defence"
+
+#: reload/templates/reload/dictionaries.txt:8
+msgid "Dynamika"
+msgstr "Dynamic"
+
+#: reload/templates/reload/dictionaries.txt:9
+msgid "Testowa"
+msgstr "Testing"
+
+#: reload/templates/reload/dictionaries.txt:10
+msgid "! do skasowania !"
+msgstr "! delete !"
+
+#: reload/templates/reload/dictionaries.txt:12
+msgid "Pozytywna"
+msgstr "Positive"
+
+#: reload/templates/reload/dictionaries.txt:13
+msgid "Neutralna"
+msgstr "Neutral"
+
+#: reload/templates/reload/dictionaries.txt:14
+msgid "Negatywna"
+msgstr "Negative"
 
 #: reload/templates/reload/edit.html:17
 msgid "Niem masz uprawniń do modyfikacji."
@@ -265,19 +349,13 @@ msgstr "You are not allowed to edit this data."
 msgid "Zapisz"
 msgstr "Save"
 
-#: reload/templates/reload/edit.html:24
-#: reload/templates/reload/view_comments_test.html:35
-#: reload/templates/reload/whats_new.html:33
-msgid "Powrót"
-msgstr "Back"
-
 #: reload/templates/reload/index.html:6
 msgid "Mamy już: Użytkowników"
 msgstr "We have: Users"
 
 #: reload/templates/reload/index.html:8
 msgid "Baza naszych elaboracji - budujemy pierwszą w Polsce"
-msgstr "Our Reloading Database"
+msgstr "EU Reloading Database"
 
 #: reload/templates/reload/index.html:12
 msgid ""
@@ -556,82 +634,58 @@ msgstr "Recently added reload tests"
 msgid "Ostatnio dodane komentarze"
 msgstr "Recently added comments"
 
-#: reload/views.py:36
+#: reload/views.py:37
 msgid "Baza elaboracji"
 msgstr "Reload database"
 
-#: reload/views.py:52
+#: reload/views.py:53
 msgid "Baza pocisków"
 msgstr "Bullet database"
 
-#: reload/views.py:63
+#: reload/views.py:64
 msgid "Baza prochu"
 msgstr "Powder database"
 
-#: reload/views.py:154
+#: reload/views.py:169
 msgid "Rejestracja"
 msgstr "Register"
 
-#: reload/views.py:182 reload/views.py:198
+#: reload/views.py:197 reload/views.py:213
 msgid "Edycja elaboracji"
 msgstr "Reload edit"
 
-#: reload/views.py:214
+#: reload/views.py:229
 msgid "Edycja komentarza"
 msgstr "Comment edit"
 
-#: reload/views.py:243
+#: reload/views.py:258
 msgid "Szczegóły elaboracji"
 msgstr "Details"
 
-#: reload/views.py:261 reload/views.py:277
+#: reload/views.py:276 reload/views.py:292
 msgid "Edycja testu"
 msgstr "Test edit"
 
-#: reload/views.py:302
+#: reload/views.py:317
 msgid "Kaliber: "
 msgstr "Caliber: "
 
-#: reload/views.py:309
+#: reload/views.py:324
 msgid "Pocisk: "
 msgstr "Bullet: "
 
-#: reload/views.py:316
+#: reload/views.py:331
 msgid "Proch: "
 msgstr "Powder: "
 
-#: reload/views.py:339 reload/views.py:360
+#: reload/views.py:354 reload/views.py:375
 msgid "Edycja prochu"
 msgstr "Powder edit"
 
-#: reload/views.py:382 reload/views.py:404
+#: reload/views.py:397 reload/views.py:419
 msgid "Edycja pocisku"
 msgstr "Bullet edit"
 
-#: reload/views.py:426 reload/views.py:448
+#: reload/views.py:441 reload/views.py:463
 msgid "Edycja kalibru"
 msgstr "Caliber edit"
-
-msgid "Polowanie"
-msgstr "Hunting"
-
-msgid "Obrona"
-msgstr "Defence"
-
-msgid "Dynamika"
-msgstr "Dynamic"
-
-msgid "Testowa"
-msgstr "Testing"
-
-msgid "! do skasowania !"
-msgstr "! delete !"
-
-msgid "Pozytywna"
-msgstr "Positive"
-
-msgid "Neutralna"
-msgstr "Neutral"
-
-msgid "Negatywna"
-msgstr "Negative"

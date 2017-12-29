@@ -3,10 +3,9 @@
 from django.shortcuts import render,redirect
 
 from django_tables2 import RequestConfig, SingleTableMixin
-
 from django_filters.views import FilterView
 
-from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 
@@ -18,6 +17,8 @@ from hitcount.models import HitCount
 from hitcount.views import HitCountMixin
 
 from django.utils.translation import ugettext_lazy as _
+
+from django.views.generic.edit import FormView
 
 
 from .models import *
@@ -66,6 +67,38 @@ class PowderFilteredTable(SingleTableMixin, FilterView):
         context.update({'title': self.title})
         return context
 
+# https://wsvincent.com/django-contact-form/
+# https://django-contact-form.readthedocs.io/en/1.4.2/
+
+class ContactFormView(FormView):
+    form_class = ContactForm
+    recipient_list = ['admin@reloaddata.pl']
+    template_name = "reload/contact.html"
+
+    def form_valid(self, form):
+        form.save()
+        return super(ContactFormView, self).form_valid(form)
+
+    def get_form_kwargs(self):
+        # ContactForm instances require instantiation with an
+        # HttpRequest.
+        kwargs = super(ContactFormView, self).get_form_kwargs()
+        kwargs.update({'request': self.request})
+
+        # We may also have been given a recipient list when
+        # instantiated.
+        if self.recipient_list is not None:
+            kwargs.update({'recipient_list': self.recipient_list})
+        return kwargs
+
+    def get_success_url(self):
+        # This is in a method instead of the success_url attribute
+        # because doing it as an attribute would involve a
+        # module-level call to reverse(), creating a circular
+        # dependency between the URLConf (which imports this module)
+        # and this module (which would need to access the URLConf to
+        # make the reverse() call).
+        return reverse('contact_sent')
 
 ##############
 # views here #
@@ -107,24 +140,6 @@ def loginuser(request):
             form = AuthenticationForm()
         return render(request, 'reload/login.html',{'form': form})
 
-#---------------------------
-# def logoutuser(request):
-#     logout(request)
-#     return redirect(index)
-#
-# class PasswordChangeFormEmail(PasswordChangeForm):
-#     email = forms.EmailField(label='Email', required=True)
-#
-#     def __init__(self, user, *args, **kwargs):
-#         super(PasswordChangeFormEmail,self).__init__(user, *args, **kwargs)  ########### NIE DZIAŁA inicjalne załadowanie
-#         self.fields['email'].initial = user.email
-#
-#     def save(self, commit=True):
-#         self.user.set_password(self.cleaned_data['new_password1'])
-#         self.user.email = self.cleaned_data['email']
-#         if commit:
-#             self.user.save()
-#         return self.user
 
 #---------------------------
 def password_change(request):
