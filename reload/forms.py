@@ -78,7 +78,7 @@ class CaliberForm(forms.ModelForm):
         }
 
 class UserCreationForm(UserCreationForm):
-    email = EmailField(label=_("Email"), required=True, help_text=_("Wymagane do odzyskania hasła."))
+    email = forms.EmailField(label=_("Email:"), required=True, help_text=_(u"Wymagane do odzyskania hasła."))
 
     class Meta:
         model = User
