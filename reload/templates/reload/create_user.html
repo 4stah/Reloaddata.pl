@@ -44,7 +44,7 @@
             {% endif %}
         </div>
         <div class="form-row">
-            {{ form.errors }}
+            {{ form.email.errors }}
             {{ form.email.label_tag }}{{ form.email }}
             {% if form.email.help_text %}
             <div class="help">{{ form.email.help_text|safe }}</div>

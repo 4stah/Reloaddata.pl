@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-29 20:16+0100\n"
+"POT-Creation-Date: 2018-01-03 15:34+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,19 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: reload/forms.py:81 reload/forms.py:115
-msgid "Email"
-msgstr "Email"
+#: reload/forms.py:80 reload/templates/reload/contact_message.txt:3
+msgid "Email:"
+msgstr "Email:"
 
-#: reload/forms.py:81
+#: reload/forms.py:80
 msgid "Wymagane do odzyskania hasła."
 msgstr "Required for password recovery"
 
-#: reload/forms.py:114
+#: reload/forms.py:90
+msgid "Użytkownik z tym adresem email już istnieje."
+msgstr "A user with that email already exists."
+
+#: reload/forms.py:121
 msgid "Imię / Nickname"
 msgstr "Name / Nickname"
 
-#: reload/forms.py:116
+#: reload/forms.py:122
+msgid "Email"
+msgstr "Email"
+
+#: reload/forms.py:123
 msgid "Wiadomość"
 msgstr "Message"
 
@@ -200,7 +208,7 @@ msgstr "Logout"
 msgid "Start"
 msgstr "Start"
 
-#: reload/templates/reload/base.html:86 reload/views.py:307
+#: reload/templates/reload/base.html:86 reload/views.py:305
 msgid "Co nowego"
 msgstr "What's new"
 
@@ -218,7 +226,7 @@ msgstr "Bullets"
 
 #: reload/templates/reload/base.html:100
 msgid "Kontakt"
-msgstr "Contact"
+msgstr "Contact us"
 
 #: reload/templates/reload/bootstrap.html:66
 msgid "poprzednia"
@@ -250,10 +258,6 @@ msgstr "Back"
 #: reload/templates/reload/contact_message.txt:3
 msgid "Kontakt od:"
 msgstr "Contact from:"
-
-#: reload/templates/reload/contact_message.txt:3
-msgid "Email:"
-msgstr "Email:"
 
 #: reload/templates/reload/contact_message.txt:5
 msgid "Treść wiadomości:"
@@ -634,58 +638,62 @@ msgstr "Recently added tests"
 msgid "Ostatnio dodane komentarze"
 msgstr "Recently added comments"
 
-#: reload/views.py:37
+#: reload/views.py:36
 msgid "Baza elaboracji"
 msgstr "Reload database"
 
-#: reload/views.py:53
+#: reload/views.py:52
 msgid "Baza pocisków"
 msgstr "Bullet database"
 
-#: reload/views.py:64
+#: reload/views.py:63
 msgid "Baza prochu"
 msgstr "Powder database"
 
-#: reload/views.py:169
+#: reload/views.py:168
 msgid "Rejestracja"
 msgstr "Register"
 
-#: reload/views.py:197 reload/views.py:213
+#: reload/views.py:195 reload/views.py:211
 msgid "Edycja elaboracji"
 msgstr "Reload edit"
 
-#: reload/views.py:229
+#: reload/views.py:227
 msgid "Edycja komentarza"
 msgstr "Comment edit"
 
-#: reload/views.py:258
+#: reload/views.py:256
 msgid "Szczegóły elaboracji"
 msgstr "Details"
 
-#: reload/views.py:276 reload/views.py:292
+#: reload/views.py:274 reload/views.py:290
 msgid "Edycja testu"
 msgstr "Test edit"
 
-#: reload/views.py:317
+#: reload/views.py:315
 msgid "Kaliber: "
 msgstr "Calibre: "
 
-#: reload/views.py:324
+#: reload/views.py:322
 msgid "Pocisk: "
 msgstr "Bullet: "
 
-#: reload/views.py:331
+#: reload/views.py:329
 msgid "Proch: "
 msgstr "Powder: "
 
-#: reload/views.py:354 reload/views.py:375
+#: reload/views.py:352 reload/views.py:373
 msgid "Edycja prochu"
 msgstr "Powder edit"
 
-#: reload/views.py:397 reload/views.py:419
+#: reload/views.py:395 reload/views.py:417
 msgid "Edycja pocisku"
 msgstr "Bullet edit"
 
-#: reload/views.py:441 reload/views.py:463
+#: reload/views.py:424
+msgid "Baza kalibrów"
+msgstr "Calibre database"
+
+#: reload/views.py:439 reload/views.py:461
 msgid "Edycja kalibru"
 msgstr "Calibre edit"

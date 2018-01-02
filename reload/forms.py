@@ -4,10 +4,9 @@ from django.conf import settings
 from django import forms
 
 from django.forms import EmailField
-from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.template import loader
@@ -78,11 +77,19 @@ class CaliberForm(forms.ModelForm):
         }
 
 class UserCreationForm(UserCreationForm):
-    email = EmailField(label=_("Email"), required=True, help_text=_("Wymagane do odzyskania hasła."))
+    email = forms.EmailField(label=_("Email:"), required=True, help_text=_(u"Wymagane do odzyskania hasła."))
 
     class Meta:
         model = User
         fields = ("username", "email", "password1", "password2")
+
+    def clean_email(self):
+        email = self.cleaned_data.get("email")
+
+        if User.objects.filter(email=email).count():
+            raise forms.ValidationError(_(u"Użytkownik z tym adresem email już istnieje."),code='email_unique',)
+
+        return email
 
     def save(self, commit=True):
         user = super(UserCreationForm, self).save(commit=False)

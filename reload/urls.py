@@ -23,7 +23,7 @@ urlpatterns = [
     url(r'^password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='reload/password_reset_complete.html'),name='password_reset_complete'),
 
 
-    url(r'^bede_wpisywal_dane/', views.create_user, name='create_user'),
+    url(r'^bede_wpisywal_dane/',views.create_user, name='create_user'),
     url(r'^registeruser/', views.create_user, name='registeruser'),
 
     url(r'^whats_new/', views.whats_new, name='whats_new'),

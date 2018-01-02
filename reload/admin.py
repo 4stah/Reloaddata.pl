@@ -66,8 +66,6 @@ UserAdmin.list_display = ('username', 'email', 'date_joined', 'last_login', 'is_
 from auditlog.admin import LogEntryAdmin
 LogEntryAdmin.list_display = ['created', 'content_type', 'resource_url', 'action', 'msg_short', 'user_url']
 
-
-
 #
 # class LogEntryAdmin(admin.ModelAdmin, LogEntryAdminMixin):
 #     list_display = ['created', 'resource_url', 'action', 'msg_short', 'user_url']

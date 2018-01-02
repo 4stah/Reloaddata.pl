@@ -5,7 +5,7 @@ register = template.Library()
 
 @register.simple_tag
 def version():
-    return  "1.04 - 29/12/2017"
+    return  "1.05 - 02/01/2018"
 
 from django.core.urlresolvers import resolve, translate_url
 

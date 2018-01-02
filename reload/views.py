@@ -7,7 +7,6 @@ from django_filters.views import FilterView
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 
 from django.contrib.contenttypes.models import ContentType
 
@@ -34,7 +33,7 @@ class LoadFilteredTable(SingleTableMixin, FilterView):
     filterset_class = LoadFilter
     template_name = 'reload/view.html'
     table_pagination = {'per_page': 15}
-    title = _('Baza elaboracji')
+    title = _(u'Baza elaboracji')
     def dispatch(self, request, *args, **kwargs):
         hit_count, created = HitCount.objects.get_or_create(content_type=ContentType.objects.get_for_model(loads),
                                                             object_pk=0)  # małe oszustwo: ustawiam pk=0 - dla wszystkich pk w loads
@@ -61,7 +60,7 @@ class PowderFilteredTable(SingleTableMixin, FilterView):
     filterset_class = PowderFilter
     template_name = 'reload/view.html'
     table_pagination = {'per_page': 15}
-    title = _('Baza prochu')
+    title = _(u'Baza prochu')
     def get_context_data(self, **kwargs):
         context = super(PowderFilteredTable, self).get_context_data(**kwargs)
         context.update({'title': self.title})
@@ -166,8 +165,7 @@ def create_user(request):
             return HttpResponseRedirect('/')
     else:
         form = UserCreationForm()
-    return render(request, 'reload/create_user.html', {'title':_('Rejestracja'),'form': form})
-
+    return render(request, 'reload/create_user.html', {'title':_(u'Rejestracja'),'form': form})
 
 ############################
 #---------------------------
@@ -194,7 +192,7 @@ def load_new(request):
             return redirect('loads')
     else:
         form = LoadForm()
-    return render(request, 'reload/edit.html', {'title':_('Edycja elaboracji'),'editable':True,'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja elaboracji'),'editable':True,'form': form})
 
 #---------------------------
 def load_edit(request,key):
@@ -210,7 +208,7 @@ def load_edit(request,key):
             return redirect('loads')
     else:
         form = LoadForm(instance=instance)
-    return render(request, 'reload/edit.html', {'title':_('Edycja elaboracji'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja elaboracji'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
 
 #---------------------------
 def comment_edit(request,key,id_load):
@@ -226,7 +224,7 @@ def comment_edit(request,key,id_load):
             return redirect('load_comment_test',id_load)
     else:
         form = CommentForm(instance=instance)
-    return render(request, 'reload/edit.html', {'title':_('Edycja komentarza'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja komentarza'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
 
 #---------------------------
 def load_comment_test (request,key):
@@ -273,7 +271,7 @@ def test_new(request,key):
             return redirect('load_comment_test',key)
     else:
         form = TestForm()
-    return render(request, 'reload/edit.html', {'title':_('Edycja testu'),'editable':True,'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja testu'),'editable':True,'form': form})
 
 #---------------------------
 def test_edit(request,key,id_load):
@@ -289,7 +287,7 @@ def test_edit(request,key,id_load):
             return redirect('load_comment_test',id_load)
     else:
         form = TestForm(instance=instance)
-    return render(request, 'reload/edit.html', {'title':_('Edycja testu'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja testu'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
 
 #---------------------------
 
@@ -304,7 +302,7 @@ def whats_new(request):
                                                         object_pk=0)  # małe oszustwo: ustawiam pk=0 - dla wszystkich pk w loads
     hit_count_response = HitCountMixin.hit_count(request, hit_count)
 
-    return render(request, 'reload/whats_new.html', {'title':_('Co nowego'),'table_l': table_l,'table_c': table_c,'table_t': table_t})
+    return render(request, 'reload/whats_new.html', {'title':_(u'Co nowego'),'table_l': table_l,'table_c': table_c,'table_t': table_t})
 
 
 #---------------------------
@@ -314,21 +312,21 @@ def load_by_caliber(request,key):
         return redirect('loginuser')
     table = LoadTable(loads.objects.filter(caliber = caliber.objects.get(pk=key)))
     RequestConfig(request, paginate={'per_page': 20}).configure(table)
-    return render(request, 'reload/view.html', {'title':_('Kaliber: ')+caliber.objects.get(pk=key).caliber,'table': table})
+    return render(request, 'reload/view.html', {'title':_(u'Kaliber: ')+caliber.objects.get(pk=key).caliber,'table': table})
 
 def load_by_bullet(request,key):
     if not request.user.is_authenticated:
         return redirect('loginuser')
     table = LoadTable(loads.objects.filter(bullet = bullet.objects.get(pk=key)))
     RequestConfig(request, paginate={'per_page': 20}).configure(table)
-    return render(request, 'reload/view.html', {'title':_('Pocisk: ')+bullet.objects.get(pk=key).vendor+' '+bullet.objects.get(pk=key).bullet,'table': table})
+    return render(request, 'reload/view.html', {'title':_(u'Pocisk: ')+bullet.objects.get(pk=key).vendor+' '+bullet.objects.get(pk=key).bullet,'table': table})
 
 def load_by_powder(request,key):
     if not request.user.is_authenticated:
         return redirect('loginuser')
     table = LoadTable(loads.objects.filter(powder = powder.objects.get(pk=key)))
     RequestConfig(request, paginate={'per_page': 20}).configure(table)
-    return render(request, 'reload/view.html', {'title':_('Proch: ')+powder.objects.get(pk=key).vendor+' '+powder.objects.get(pk=key).powder,'table': table})
+    return render(request, 'reload/view.html', {'title':_(u'Proch: ')+powder.objects.get(pk=key).vendor+' '+powder.objects.get(pk=key).powder,'table': table})
 
 
 ############################
@@ -351,7 +349,7 @@ def powder_new(request):
             return redirect('powders')
     else:
         form = PowderForm()
-    return render(request, 'reload/edit.html', {'title':_('Edycja prochu'),'editable':True,'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja prochu'),'editable':True,'form': form})
 
 #---------------------------
 def powder_edit(request,key):
@@ -372,7 +370,7 @@ def powder_edit(request,key):
     else:
         form = PowderForm(instance=instance)
 
-    return render(request, 'reload/edit.html', {'title':_('Edycja prochu'),'editable': editable,'update_disabled':update_disabled,'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja prochu'),'editable': editable,'update_disabled':update_disabled,'form': form})
 
 ############################
 #---------------------------
@@ -394,7 +392,7 @@ def bullet_new(request):
             return redirect('bullets')
     else:
         form = BulletForm()
-    return render(request, 'reload/edit.html', {'title':_('Edycja pocisku'),'editable':True,'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja pocisku'),'editable':True,'form': form})
 
 #---------------------------
 def bullet_edit(request,key):
@@ -416,14 +414,14 @@ def bullet_edit(request,key):
         form = BulletForm(instance=instance)
 
     return render(request, 'reload/edit.html',
-                  {'title': _('Edycja pocisku'), 'editable': editable, 'update_disabled': update_disabled, 'form': form})
+                  {'title': _(u'Edycja pocisku'), 'editable': editable, 'update_disabled': update_disabled, 'form': form})
 
 ############################
 #---------------------------
 def calibers(request):
     table = CaliberTable(caliber.objects.all())
     RequestConfig(request).configure(table) # żeby reagował na sortowanie
-    return render(request, 'reload/view.html', {'title':'Baza kalibrów','table': table})
+    return render(request, 'reload/view.html', {'title':_(u'Baza kalibrów'),'table': table})
 
 #---------------------------
 def caliber_new(request):
@@ -438,7 +436,7 @@ def caliber_new(request):
             return redirect('calibers')
     else:
         form = CaliberForm()
-    return render(request, 'reload/edit.html', {'title':_('Edycja kalibru'),'editable':True,'form': form})
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja kalibru'),'editable':True,'form': form})
 
 #---------------------------
 def caliber_edit(request,key):
@@ -460,7 +458,7 @@ def caliber_edit(request,key):
         form = CaliberForm(instance=instance)
 
     return render(request, 'reload/edit.html',
-                  {'title': _('Edycja kalibru'), 'editable': editable, 'update_disabled': update_disabled, 'form': form})
+                  {'title': _(u'Edycja kalibru'), 'editable': editable, 'update_disabled': update_disabled, 'form': form})
 
 
 ############################
