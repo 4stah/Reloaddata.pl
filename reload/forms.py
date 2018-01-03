@@ -88,7 +88,6 @@ class UserCreationForm(UserCreationForm):
 
         if User.objects.filter(email=email).count():
             raise forms.ValidationError(_(u"Użytkownik z tym adresem email już istnieje."),code='email_unique',)
-
         return email
 
     def save(self, commit=True):
