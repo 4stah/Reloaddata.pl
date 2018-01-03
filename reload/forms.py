@@ -11,8 +11,6 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.template import loader
 
-
-
 from .models import powder
 from .models import bullet
 from .models import caliber

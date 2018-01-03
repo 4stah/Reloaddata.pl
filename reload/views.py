@@ -309,21 +309,21 @@ def whats_new(request):
 
 def load_by_caliber(request,key):
     if not request.user.is_authenticated:
-        return redirect('loginuser')
+        return redirect('/loginuser?next=%s' % request.path)
     table = LoadTable(loads.objects.filter(caliber = caliber.objects.get(pk=key)))
     RequestConfig(request, paginate={'per_page': 20}).configure(table)
     return render(request, 'reload/view.html', {'title':_(u'Kaliber: ')+caliber.objects.get(pk=key).caliber,'table': table})
 
 def load_by_bullet(request,key):
     if not request.user.is_authenticated:
-        return redirect('loginuser')
+        return redirect('/loginuser?next=%s' % request.path)
     table = LoadTable(loads.objects.filter(bullet = bullet.objects.get(pk=key)))
     RequestConfig(request, paginate={'per_page': 20}).configure(table)
     return render(request, 'reload/view.html', {'title':_(u'Pocisk: ')+bullet.objects.get(pk=key).vendor+' '+bullet.objects.get(pk=key).bullet,'table': table})
 
 def load_by_powder(request,key):
     if not request.user.is_authenticated:
-        return redirect('loginuser')
+        return redirect('/loginuser?next=%s' % request.path)
     table = LoadTable(loads.objects.filter(powder = powder.objects.get(pk=key)))
     RequestConfig(request, paginate={'per_page': 20}).configure(table)
     return render(request, 'reload/view.html', {'title':_(u'Proch: ')+powder.objects.get(pk=key).vendor+' '+powder.objects.get(pk=key).powder,'table': table})

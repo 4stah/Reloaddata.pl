@@ -39,7 +39,7 @@
         {% for language in languages %}
             <!-- <a href="{% change_language language.code %}"> {{ language.name }}</a> /!-->
             <a style="float:left;margin: 6px 10px;"
-               href="{% change_language language.code %}">
+               link rel="alternate" href="{% change_language language.code %}" hreflang="{{ language.code }}">
                 <img src="/static/reload/img/{{ language.code }}.png" height="20" width="20"></a>
         {% endfor %}
 
