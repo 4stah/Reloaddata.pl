@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-03 15:34+0100\n"
+"POT-Creation-Date: 2018-01-04 18:16+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,27 +14,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: reload/forms.py:80 reload/templates/reload/contact_message.txt:3
+#: reload/forms.py:78 reload/templates/reload/contact_message.txt:3
 msgid "Email:"
 msgstr "Email:"
 
-#: reload/forms.py:80
+#: reload/forms.py:78
 msgid "Wymagane do odzyskania hasła."
 msgstr "Required for password recovery"
 
-#: reload/forms.py:90
+#: reload/forms.py:88
 msgid "Użytkownik z tym adresem email już istnieje."
 msgstr "A user with that email already exists."
 
-#: reload/forms.py:121
+#: reload/forms.py:118
 msgid "Imię / Nickname"
 msgstr "Name / Nickname"
 
-#: reload/forms.py:122
+#: reload/forms.py:119
 msgid "Email"
 msgstr "Email"
 
-#: reload/forms.py:123
+#: reload/forms.py:120
 msgid "Wiadomość"
 msgstr "Message"
 
@@ -85,7 +85,7 @@ msgstr "Calibration [in]"
 
 #: reload/models.py:46
 msgid "Długość [mm]"
-msgstr "Length"
+msgstr "Length [mm]"
 
 #: reload/models.py:47
 msgid "BC"
@@ -326,22 +326,30 @@ msgid "Dynamika"
 msgstr "Dynamic"
 
 #: reload/templates/reload/dictionaries.txt:9
-msgid "Testowa"
+msgid "Testy"
 msgstr "Testing"
 
 #: reload/templates/reload/dictionaries.txt:10
+msgid "Match Trening"
+msgstr "Match Training"
+
+#: reload/templates/reload/dictionaries.txt:11
+msgid "Trening"
+msgstr "Training"
+
+#: reload/templates/reload/dictionaries.txt:13
 msgid "! do skasowania !"
 msgstr "! to be deleted !"
 
-#: reload/templates/reload/dictionaries.txt:12
+#: reload/templates/reload/dictionaries.txt:15
 msgid "Pozytywna"
 msgstr "Positive"
 
-#: reload/templates/reload/dictionaries.txt:13
+#: reload/templates/reload/dictionaries.txt:16
 msgid "Neutralna"
 msgstr "Neutral"
 
-#: reload/templates/reload/dictionaries.txt:14
+#: reload/templates/reload/dictionaries.txt:17
 msgid "Negatywna"
 msgstr "Negative"
 

@@ -6,7 +6,10 @@
 {% trans  "Polowanie" %}
 {% trans  "Obrona" %}
 {% trans  "Dynamika" %}
-{% trans  "Testowa" %}
+{% trans  "Testy" %}
+{% trans  "Match Trening" %}
+{% trans  "Trening" %}
+
 {% trans  "! do skasowania !" %}
 
 {% trans  "Pozytywna" %}
