@@ -99,7 +99,7 @@ class comment (models.Model):
     score = models.ForeignKey(score, on_delete=models.CASCADE,verbose_name=_("Ocena"))
     user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name=_("Właściciel"))
     def __unicode__(self):
-        return str(self.load)+' ' + self.comment.encode('utf-8')
+        return str(self.load)+' ' + self.comment
 
 auditlog.register(comment)
 
