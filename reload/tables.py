@@ -47,7 +47,7 @@ class CommentTable(tables.Table):
         return mark_safe('<a href=' +reverse("comment_edit",args=[record.id,record.load])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     def render_load (self,record):
-        return mark_safe('<a href=' +reverse("load_edit",args=[record.load])+ '> <img src="/static/reload/img/search.svg"/></a>')
+        return mark_safe('<a href=' +reverse("load_comment_test",args=[record.load])+ '> <img src="/static/reload/img/search.svg"/></a>')
 
     class Meta:
         model = comment
