@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-04 18:16+0100\n"
+"POT-Creation-Date: 2018-01-07 12:48+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,144 +14,147 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: reload/forms.py:78 reload/templates/reload/contact_message.txt:3
+#: reload/forms.py:88 reload/templates/reload/contact_message.txt:3
 msgid "Email:"
 msgstr "Email:"
 
-#: reload/forms.py:78
+#: reload/forms.py:88
 msgid "Wymagane do odzyskania hasła."
 msgstr "Required for password recovery"
 
-#: reload/forms.py:88
+#: reload/forms.py:98
 msgid "Użytkownik z tym adresem email już istnieje."
 msgstr "A user with that email already exists."
 
-#: reload/forms.py:118
+#: reload/forms.py:128
 msgid "Imię / Nickname"
 msgstr "Name / Nickname"
 
-#: reload/forms.py:119
+#: reload/forms.py:129
 msgid "Email"
 msgstr "Email"
 
-#: reload/forms.py:120
+#: reload/forms.py:130
 msgid "Wiadomość"
 msgstr "Message"
 
-#: reload/models.py:10 reload/models.py:41 reload/models.py:76
+#: reload/models.py:10 reload/models.py:90
 msgid "Kaliber"
 msgstr "Calibre"
 
-#: reload/models.py:11 reload/models.py:27 reload/models.py:48
-#: reload/models.py:98 reload/tables.py:48 reload/tables.py:67
+#: reload/models.py:11 reload/models.py:25 reload/models.py:40
+#: reload/models.py:62 reload/models.py:112 reload/tables.py:44
+#: reload/tables.py:63
 msgid "Komentarz"
 msgstr "Comment"
 
-#: reload/models.py:12 reload/models.py:28 reload/models.py:49
-#: reload/models.py:87 reload/models.py:100 reload/models.py:117
+#: reload/models.py:12 reload/models.py:26 reload/models.py:41
+#: reload/models.py:63 reload/models.py:101 reload/models.py:114
+#: reload/models.py:131
 msgid "Właściciel"
 msgstr "Owner"
 
-#: reload/models.py:13 reload/models.py:29 reload/models.py:50
-#: reload/models.py:74 reload/models.py:95 reload/models.py:108
-#: reload/tables.py:46 reload/tables.py:65
+#: reload/models.py:13 reload/models.py:27 reload/models.py:42
+#: reload/models.py:64 reload/models.py:88 reload/models.py:109
+#: reload/models.py:122 reload/tables.py:43 reload/tables.py:61
 msgid "Data"
 msgstr "Date"
 
-#: reload/models.py:14 reload/models.py:30 reload/models.py:51
-#: reload/models.py:75 reload/models.py:96 reload/models.py:109
+#: reload/models.py:14 reload/models.py:28 reload/models.py:43
+#: reload/models.py:65 reload/models.py:89 reload/models.py:110
+#: reload/models.py:123
 msgid "Data Mod."
 msgstr "Mod. Date"
 
-#: reload/models.py:25 reload/models.py:42
+#: reload/models.py:24 reload/models.py:58
+msgid "Kalibracja [in]"
+msgstr "Diameter [in]"
+
+#: reload/models.py:38 reload/models.py:55
 msgid "Producent"
 msgstr "Vendor"
 
-#: reload/models.py:26 reload/models.py:79 reload/templates/reload/base.html:90
+#: reload/models.py:39 reload/models.py:93 reload/templates/reload/base.html:93
 msgid "Proch"
 msgstr "Powder"
 
-#: reload/models.py:43 reload/models.py:78
+#: reload/models.py:56 reload/models.py:92
 msgid "Pocisk"
 msgstr "Bullet"
 
-#: reload/models.py:44
+#: reload/models.py:57
 msgid "Waga [gr]"
 msgstr "Weight [gr]"
 
-#: reload/models.py:45
-msgid "Kalibracja [in]"
-msgstr "Calibration [in]"
-
-#: reload/models.py:46
+#: reload/models.py:60
 msgid "Długość [mm]"
 msgstr "Length [mm]"
 
-#: reload/models.py:47
+#: reload/models.py:61
 msgid "BC"
 msgstr "BC"
 
-#: reload/models.py:61 reload/models.py:85
+#: reload/models.py:75 reload/models.py:99
 msgid "Przeznaczenie"
 msgstr "Purpose"
 
-#: reload/models.py:69 reload/models.py:99
+#: reload/models.py:83 reload/models.py:113
 msgid "Ocena"
 msgstr "Score"
 
-#: reload/models.py:77 reload/models.py:97 reload/models.py:110
+#: reload/models.py:91 reload/models.py:111 reload/models.py:124
 msgid "Broń"
 msgstr "Weapon"
 
-#: reload/models.py:80
+#: reload/models.py:94
 msgid "COL [mm]"
 msgstr "COL [mm]"
 
-#: reload/models.py:81
+#: reload/models.py:95
 msgid "Naważka [gr]"
 msgstr "Load [gr]"
 
-#: reload/models.py:82
+#: reload/models.py:96
 msgid "Crimp [mm]"
 msgstr "Crimp [mm]"
 
-#: reload/models.py:83
+#: reload/models.py:97
 msgid "Spłonka"
 msgstr "Prime"
 
-#: reload/models.py:84
+#: reload/models.py:98
 msgid "Łuska"
 msgstr "Case"
 
-#: reload/models.py:86
+#: reload/models.py:100
 msgid "Głosy"
 msgstr "Votes"
 
-#: reload/models.py:94 reload/models.py:107
+#: reload/models.py:108 reload/models.py:121
 msgid "Elaboracja"
 msgstr "Reload"
 
-#: reload/models.py:111
+#: reload/models.py:125
 msgid "V0 (QL) [m/s]"
 msgstr ""
 
-#: reload/models.py:112
+#: reload/models.py:126
 msgid "V0 (chrono) [m/s]"
 msgstr ""
 
-#: reload/models.py:113
+#: reload/models.py:127
 msgid "Temp. [C]"
 msgstr ""
 
-#: reload/models.py:114
+#: reload/models.py:128
 msgid "Grupa [MOA]"
 msgstr "Group [MOA]"
 
-#: reload/models.py:115
+#: reload/models.py:129
 msgid "Opis"
 msgstr "Description"
 
-#: reload/models.py:116
+#: reload/models.py:130
 msgid "Zdjęcie"
 msgstr "Photo"
 
@@ -159,72 +162,80 @@ msgstr "Photo"
 msgid "Komentarze / Testy"
 msgstr "Comments / Tests"
 
-#: reload/tables.py:90 reload/tables.py:117 reload/tables.py:138
+#: reload/tables.py:84 reload/tables.py:104 reload/tables.py:125
 #: reload/templates/reload/index.html:6
 msgid "Elaboracji"
 msgstr "Reloads"
 
-#: reload/templates/reload/base.html:33
+#: reload/tables.py:143
+msgid "Pocisków"
+msgstr "Bullets"
+
+#: reload/templates/reload/base.html:35
 msgid "- baza elaboracji"
 msgstr " - reloading database"
 
-#: reload/templates/reload/base.html:48
+#: reload/templates/reload/base.html:50
 msgid "Witam,"
 msgstr "Welcome,"
 
-#: reload/templates/reload/base.html:51
+#: reload/templates/reload/base.html:53
 msgid "Gościa"
 msgstr "Guest"
 
-#: reload/templates/reload/base.html:51
+#: reload/templates/reload/base.html:53
 msgid "Proszę się"
 msgstr "Please"
 
-#: reload/templates/reload/base.html:58
+#: reload/templates/reload/base.html:60
 msgid "View site"
 msgstr "View site"
 
-#: reload/templates/reload/base.html:62
+#: reload/templates/reload/base.html:64
 msgid "Zalogować"
 msgstr "Login"
 
-#: reload/templates/reload/base.html:63
+#: reload/templates/reload/base.html:65
 msgid "lub"
 msgstr "or"
 
-#: reload/templates/reload/base.html:64
+#: reload/templates/reload/base.html:66
 msgid "Zarejestrować"
 msgstr "Register"
 
-#: reload/templates/reload/base.html:68
+#: reload/templates/reload/base.html:70
 msgid "Zmiana hasła"
 msgstr "Change password"
 
-#: reload/templates/reload/base.html:72
+#: reload/templates/reload/base.html:74
 msgid "Wyloguj"
 msgstr "Logout"
 
-#: reload/templates/reload/base.html:85
+#: reload/templates/reload/base.html:87
 msgid "Start"
 msgstr "Start"
 
-#: reload/templates/reload/base.html:86 reload/views.py:305
+#: reload/templates/reload/base.html:88 reload/views.py:300
 msgid "Co nowego"
 msgstr "What's new"
 
-#: reload/templates/reload/base.html:87
+#: reload/templates/reload/base.html:89
 msgid "Elaboracje"
 msgstr "Reloads"
 
-#: reload/templates/reload/base.html:88
+#: reload/templates/reload/base.html:90
 msgid "Kalibry"
 msgstr "Calibres"
 
-#: reload/templates/reload/base.html:89
+#: reload/templates/reload/base.html:91
+msgid "Kalibracje"
+msgstr "Diameters"
+
+#: reload/templates/reload/base.html:92
 msgid "Pociski"
 msgstr "Bullets"
 
-#: reload/templates/reload/base.html:100
+#: reload/templates/reload/base.html:103
 msgid "Kontakt"
 msgstr "Contact us"
 
@@ -399,7 +410,7 @@ msgid ""
 msgstr ""
 "\n"
 "<strong> The rules are simple: </strong> \n"
-"<li> only enter your own, tested elaborations - no \"my friend did it ...\"! "
+"<li> enter only your own, tested elaborations - no \"my friend did it ...\"! "
 "</li> \n"
 " <li> enter components that are available in EU </li> \n"
 "<li> you can edit only your data, but you can add comments and tests to "
@@ -430,8 +441,9 @@ msgid ""
 "kliknięciu w wybraną pozycję otrzymamy odpowiednią listę elaboracji.</p></"
 "li>\n"
 "<p></p><p>Dodawanie / edycja danych:</p>\n"
-"<li>Sprawdzamy UWAŻNIE czy na pewno nie ma już w bazie kalibru/pocisku/"
-"prochu - jak nie ma, dodajemy (przyciski po prawej stronie na dole). </li>\n"
+"<li>Sprawdzamy UWAŻNIE czy na pewno nie ma już w bazie kalibru / "
+"kalibracji / pocisku / prochu - jak nie ma, dodajemy (przyciski po prawej "
+"stronie na dole). </li>\n"
 "<li>Edytowanie własnych wpisów możliwe jest po kliknięciu na ikonę ołówka "
 "(dotyczy wszystkich tabel, opcja dla posiadaczy kont)\n"
 "    <p style=\"padding-left:1em\">system blokuje możliwość edycji Kalibrów, "
@@ -458,7 +470,8 @@ msgstr ""
 "\n"
 "<p> </p> <p> Add / edit data: </p> \n"
 "<li> First, check CAREFULLY if your component data does not exists in the "
-"database (calibres / bullets / powder) - if not, add it please. </li> \n"
+"database (calibres / diameters / bullets / powder) - if not, add it please. "
+"</li> \n"
 "<li> Editing your own entries is possible after clicking on the pencil icon "
 "(applies to all tables, option for registered users only) \n"
 "<p style = \" padding-left: 1em \"> the system blocks the ability to edit "
@@ -598,18 +611,22 @@ msgid "Nowa elaboracja"
 msgstr "New reload"
 
 #: reload/templates/reload/view.html:37
-msgid "Nowy kaliber"
+msgid "Nowy kaliber broni"
 msgstr "New calibre"
 
 #: reload/templates/reload/view.html:38
+msgid "Nowa kalibracja pocisku"
+msgstr "New bullet diameter"
+
+#: reload/templates/reload/view.html:39
 msgid "Nowy pocisk"
 msgstr "New bullet"
 
-#: reload/templates/reload/view.html:39
+#: reload/templates/reload/view.html:40
 msgid "Nowy proch"
 msgstr "New powder"
 
-#: reload/templates/reload/view.html:45
+#: reload/templates/reload/view.html:46
 #: reload/templates/reload/view_comments_test.html:40
 msgid "Aby dodawać nowe dane -  musisz się zalogować."
 msgstr "Please login to add / edit data."
@@ -646,62 +663,74 @@ msgstr "Recently added tests"
 msgid "Ostatnio dodane komentarze"
 msgstr "Recently added comments"
 
-#: reload/views.py:36
+#: reload/views.py:37
 msgid "Baza elaboracji"
 msgstr "Reload database"
 
-#: reload/views.py:52
+#: reload/views.py:53
 msgid "Baza pocisków"
 msgstr "Bullet database"
 
-#: reload/views.py:63
+#: reload/views.py:64
 msgid "Baza prochu"
 msgstr "Powder database"
 
-#: reload/views.py:168
+#: reload/views.py:164
 msgid "Rejestracja"
 msgstr "Register"
 
-#: reload/views.py:195 reload/views.py:211
+#: reload/views.py:189 reload/views.py:205
 msgid "Edycja elaboracji"
 msgstr "Reload edit"
 
-#: reload/views.py:227
+#: reload/views.py:222
 msgid "Edycja komentarza"
 msgstr "Comment edit"
 
-#: reload/views.py:256
+#: reload/views.py:251
 msgid "Szczegóły elaboracji"
 msgstr "Details"
 
-#: reload/views.py:274 reload/views.py:290
+#: reload/views.py:269 reload/views.py:285
 msgid "Edycja testu"
 msgstr "Test edit"
 
-#: reload/views.py:315
+#: reload/views.py:310
 msgid "Kaliber: "
 msgstr "Calibre: "
 
-#: reload/views.py:322
+#: reload/views.py:317
 msgid "Pocisk: "
 msgstr "Bullet: "
 
-#: reload/views.py:329
+#: reload/views.py:324
 msgid "Proch: "
 msgstr "Powder: "
 
-#: reload/views.py:352 reload/views.py:373
+#: reload/views.py:347 reload/views.py:372
 msgid "Edycja prochu"
 msgstr "Powder edit"
 
-#: reload/views.py:395 reload/views.py:417
+#: reload/views.py:378
+msgid "Baza kalibracji pocisków"
+msgstr "Bullet diameter database"
+
+#: reload/views.py:393
+msgid "Edycja kalibracji pocisków"
+msgstr "Bullet diameter edit"
+
+#: reload/views.py:414
+msgid "Edycja kalibracji pocisku"
+msgstr "Bullet diameter edit"
+
+#: reload/views.py:436 reload/views.py:458
 msgid "Edycja pocisku"
 msgstr "Bullet edit"
 
-#: reload/views.py:424
+#: reload/views.py:465
 msgid "Baza kalibrów"
 msgstr "Calibre database"
 
-#: reload/views.py:439 reload/views.py:461
+#: reload/views.py:480 reload/views.py:502
 msgid "Edycja kalibru"
 msgstr "Calibre edit"

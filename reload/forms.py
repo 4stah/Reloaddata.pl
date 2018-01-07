@@ -11,12 +11,12 @@ from django.contrib.sites.shortcuts import get_current_site
 from django.core.mail import send_mail
 from django.template import loader
 
-from .models import powder
-from .models import bullet
-from .models import caliber
-from .models import loads
-from .models import comment
-from .models import test
+from .models import *
+# from .models import bullet
+# from .models import caliber
+# from .models import loads
+# from .models import comment
+# from .models import test
 
 class LoadForm(forms.ModelForm):
     class Meta:
@@ -73,6 +73,16 @@ class CaliberForm(forms.ModelForm):
         widgets = {
             'comment': forms.Textarea(attrs={'rows': 4, 'cols': 19}),
         }
+
+class DiameterForm(forms.ModelForm):
+    class Meta:
+        model = diameter
+        fields = '__all__'
+        exclude = ['user']
+        widgets = {
+            'comment': forms.Textarea(attrs={'rows': 4, 'cols': 19}),
+        }
+
 
 class UserCreationForm(UserCreationForm):
     email = forms.EmailField(label=_("Email:"), required=True, help_text=_(u"Wymagane do odzyskania hasła."))

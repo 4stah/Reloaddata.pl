@@ -34,7 +34,8 @@
 {% if not user.is_anonymous %}
 <div class="submit-row">
     <a  href="{% url 'load_new'   %}"><input type="button" value="{% trans 'Nowa elaboracja' %}" /> </a>
-    <a  href="{% url 'caliber_new'%}"><input type="button" value="{% trans 'Nowy kaliber' %}" /> </a>
+    <a  href="{% url 'caliber_new'%}"><input type="button" value="{% trans 'Nowy kaliber broni' %}" /> </a>
+    <a  href="{% url 'diameter_new'%}"><input type="button" value="{% trans 'Nowa kalibracja pocisku' %}" /> </a>
     <a  href="{% url 'bullet_new' %}"><input type="button" value="{% trans 'Nowy pocisk' %}" /> </a>
     <a  href="{% url 'powder_new' %}"><input type="button" value="{% trans 'Nowy proch' %}" /> </a>
 </div>

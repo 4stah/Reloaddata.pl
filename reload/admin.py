@@ -84,7 +84,7 @@ LogEntryAdmin.list_display = ['created', 'content_type', 'resource_url', 'action
 ##################
 ##### RELOAD #####
 
-from .models import caliber, powder, bullet, quality, score, loads, comment, test
+from .models import caliber, diameter, powder, bullet, quality, score, loads, comment, test
 
 
 @admin.register(caliber)
@@ -92,6 +92,9 @@ class caliberAdmin(admin.ModelAdmin):
     list_display = (u'id', u'caliber', u'comment', u'user', u'date',u'datemod')
     list_filter = ('user', u'date',u'datemod')
 
+@admin.register(diameter)
+class diameterAdmin(admin.ModelAdmin):
+    list_display = (u'id', u'diameter')
 
 @admin.register(powder)
 class powderAdmin(admin.ModelAdmin):
@@ -111,11 +114,10 @@ class powderAdmin(admin.ModelAdmin):
 class bulletAdmin(admin.ModelAdmin):
     list_display = (
         u'id',
-        u'caliber',
+        u'diameter',
         u'vendor',
         u'bullet',
         u'weight',
-        u'calibration',
         u'length',
         u'bc',
         u'comment',
@@ -123,7 +125,7 @@ class bulletAdmin(admin.ModelAdmin):
         u'date',
         u'datemod',
     )
-    list_filter = ('caliber', 'user', u'date')
+    list_filter = ('diameter', 'user', u'date')
 
 
 @admin.register(quality)

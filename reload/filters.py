@@ -11,6 +11,7 @@ class LoadFilter(django_filters.FilterSet):
         fields = ['caliber', 'powder', 'user']
 
 class BulletFilter(django_filters.FilterSet):
+    diameter = django_filters.ChoiceFilter(choices=bullet.objects.order_by('diameter__diameter').values_list('diameter__pk','diameter__diameter').distinct())
     user = django_filters.ChoiceFilter(choices=bullet.objects.order_by('user__username').values_list('user__pk','user__username').distinct())
     vendor = django_filters.ChoiceFilter(choices=bullet.objects.order_by('vendor').values_list('vendor','vendor').distinct())
     #user = django_filters.ModelChoiceFilter(queryset=User.objects.all().order_by('username'))
@@ -18,15 +19,13 @@ class BulletFilter(django_filters.FilterSet):
 
     class Meta:
         model = bullet
-        fields = ['caliber', 'vendor', 'user']
-
+        fields = ['vendor', 'diameter', 'user']
 
 class PowderFilter(django_filters.FilterSet):
-    #user = django_filters.ModelChoiceFilter(queryset=User.objects.all().order_by('username'))
     user = django_filters.ChoiceFilter(choices=powder.objects.order_by('user__username').values_list('user__pk','user__username').distinct())
     vendor = django_filters.ChoiceFilter(choices=powder.objects.order_by('vendor').values_list('vendor','vendor').distinct())
-    powder = django_filters.ChoiceFilter(choices=powder.objects.order_by('powder').values_list('powder','powder').distinct())
+    # powder = django_filters.ChoiceFilter(choices=powder.objects.order_by('powder').values_list('powder','powder').distinct())
 
     class Meta:
         model = powder
-        fields = ['vendor', 'powder', 'user']
+        fields = ['vendor', 'user']

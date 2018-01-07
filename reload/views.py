@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django.shortcuts import render,redirect
+import sys
 
 from django_tables2 import RequestConfig, SingleTableMixin
 from django_filters.views import FilterView
@@ -123,13 +124,8 @@ def loginuser(request):
                 if access is not None:
                     login(request, access)
                     if access.is_active:
-                        hit_count, created = HitCount.objects.get_or_create(
-                            content_type=ContentType.objects.get_for_model(User),
-                            object_pk=0)  # małe oszustwo: ustawiam pk=0 - dla wszystkich pk w user
-                        hit_count_response = HitCountMixin.hit_count(request, hit_count)
                         hit_count = HitCount.objects.get_for_object(User.objects.get(username=user)) # hit_count dla poszczególnych wierszy (kluczy)
                         hit_count_response = HitCountMixin.hit_count(request, hit_count)
-
                         next_url = request.GET.get('next')
                         if next_url and not next_url[4:][:10]=='logoutuser':
                             return redirect(next_url)
@@ -171,11 +167,9 @@ def create_user(request):
 #---------------------------
 # def loaddata(request):
 #     table = LoadTable(loads.objects.all())
-#
 #     #hit_count = HitCount.objects.get_for_object(loads.objects.get(pk=3)) # hit_count dla poszczególnych wierszy (kluczy)
 #     hit_count, created = HitCount.objects.get_or_create(content_type=ContentType.objects.get_for_model(loads),object_pk=0) # małe oszustwo: ustawiam pk=0 - dla wszystkich pk w loads
 #     hit_count_response = HitCountMixin.hit_count(request, hit_count)
-#
 #     RequestConfig(request, paginate={'per_page': 20}).configure(table)  # dodatkowo, żeby reagował na sortowanie
 #     return render(request, 'reload/view.html', {'title':'Baza elaboracji','table': table})
 
@@ -217,7 +211,8 @@ def comment_edit(request,key,id_load):
     instance = comment.objects.get(id=key)
     if request.method == 'POST':
         if (not instance.user == request.user) and (not request.user.is_superuser):
-            return redirect('load_comment',id_load)
+            return redirect('load_comment_test',id_load)
+
         form = CommentForm(request.POST,instance=instance)
         if form.is_valid():
             form.save()
@@ -353,12 +348,13 @@ def powder_new(request):
 
 #---------------------------
 def powder_edit(request,key):
+
+    # print("----" + request.path, sys.stderr) #to powder_edit
     if not request.user.is_authenticated:
         return redirect('/loginuser?next=%s' % request.path)
     instance = powder.objects.get(id=key)
     editable = (instance.user == request.user) or (request.user.is_superuser) #rekord użytkownika
-    update_disabled = (loads.objects.filter(powder = instance).exclude(user = instance.user).count()>0) and (not request.user.is_superuser)
-    # uniemizliwia edytowanie jesli slownik zostal uzyty przez innych
+    update_disabled = (loads.objects.filter(powder = instance).exclude(user = instance.user).count()>0) and (not request.user.is_superuser) # uniemizliwia edytowanie jesli slownik zostal uzyty przez innych
 
     if request.method == 'POST':
         if (not editable or update_disabled):
@@ -367,10 +363,55 @@ def powder_edit(request,key):
         if form.is_valid():
             form.save()
             return redirect('powders')
+            # return HttpResponseRedirect(r)
     else:
+        # r = request.META.get('HTTP_REFERER')
+        # print("----" + r, sys.stderr)
         form = PowderForm(instance=instance)
 
     return render(request, 'reload/edit.html', {'title':_(u'Edycja prochu'),'editable': editable,'update_disabled':update_disabled,'form': form})
+
+#---------------------------
+def diameters(request):
+    table = DiameterTable(diameter.objects.all())
+    RequestConfig(request).configure(table) # żeby reagował na sortowanie
+    return render(request, 'reload/view.html', {'title':_(u'Baza kalibracji pocisków'),'table': table})
+
+#---------------------------
+def diameter_new(request):
+    if not request.user.is_authenticated:
+        return redirect('/loginuser?next=%s' % request.path)
+    if request.method == 'POST':
+        form = DiameterForm(request.POST)
+        if form.is_valid():
+            update_user = form.save(commit=False)
+            update_user.user = request.user
+            update_user.save()
+            return redirect('diameters')
+    else:
+        form = DiameterForm()
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja kalibracji pocisków'),'editable':True,'form': form})
+
+#---------------------------
+def diameter_edit(request,key):
+    if not request.user.is_authenticated:
+        return redirect('/loginuser?next=%s' % request.path)
+    instance = diameter.objects.get(id=key)
+    editable = (instance.user == request.user) or (request.user.is_superuser) #rekord użytkownika
+    update_disabled = (bullet.objects.filter(diameter = instance).exclude(user = instance.user).count()>0) and (not request.user.is_superuser)
+    # uniemizliwia edytowanie jesli slownik zostal uzyty przez innych
+
+    if request.method == 'POST':
+        if (not editable or update_disabled):
+            return redirect('diameters')
+        form = DiameterForm(request.POST,instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect('diameters')
+    else:
+        form = DiameterForm(instance=instance)
+
+    return render(request, 'reload/edit.html', {'title':_(u'Edycja kalibracji pocisku'),'editable': editable,'update_disabled':update_disabled,'form': form})
 
 ############################
 #---------------------------

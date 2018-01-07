@@ -15,15 +15,13 @@ class LoadTable_templ(tables.Table):
     no_comments = tables.Column(verbose_name=_('Komentarze / Testy'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
     def render_id (self,record):
-        return mark_safe('<a href="/load_edit/%s"> <img src="/static/reload/img/icon-changelink.svg"/></a>' % (record.id))
+        return mark_safe('<a href=' +reverse("load_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     def render_no_comments (self,record,column):
         count_c = comment.objects.filter(load=record.id).count()
         count_t = test.objects.filter(load=record.id).count()
         if (count_c + count_t) > 0:
-            # return mark_safe('<a href="/load_comment_test/%s"> %s/%s &emsp; <img src="/static/reload/img/search.svg"/></a>' % (record.id, count_c,count_t))
             return mark_safe('<a href=' + reverse("load_comment_test", args=[record.id]) + '> %s/%s &emsp; <img src="/static/reload/img/search.svg"/></a>' % (count_c,count_t))
-        # return mark_safe('<a href="/load_comment_test/%s"> <img src="/static/reload/img/icon-addlink.svg"/></a>' % (record.id))
         return mark_safe('<a href=' + reverse("load_comment_test", args=[record.id]) + '> <img src="/static/reload/img/icon-addlink.svg"/></a>')
 
     class Meta:
@@ -42,16 +40,14 @@ class LoadTable_w_n(LoadTable_templ):
 
 class CommentTable(tables.Table):
     id = tables.Column(verbose_name='')
-    # id = tables.LinkColumn('comment_edit', args=[A('pk'),A('load')])
     date = tables.DateTimeColumn(verbose_name=_('Data'),format='d-M H:i')
-    # load = tables.LinkColumn('load_comment_test', args=[A('load')],verbose_name='Elaboracja')
     comment = tables.Column(verbose_name=_('Komentarz'), attrs={'td' : {'style' : 'max-width:650px; word-wrap:break-word;'}}) #### to CSS? class name?>
 
     def render_id (self,record):
-        return mark_safe('<a href="/comment_edit/%s/%s"> <img src="/static/reload/img/icon-changelink.svg"/></a>' % (record.id,record.load))
+        return mark_safe('<a href=' +reverse("comment_edit",args=[record.id,record.load])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     def render_load (self,record):
-        return mark_safe('<a href="/load_comment_test/%s"> <img src="/static/reload/img/search.svg"/></a>' % (record.load))
+        return mark_safe('<a href=' +reverse("load_edit",args=[record.load])+ '> <img src="/static/reload/img/search.svg"/></a>')
 
     class Meta:
         model = comment
@@ -70,10 +66,10 @@ class TestTable(tables.Table):
         return mark_safe('<a href="%s"> <img src="%s" height="50px"/></a>' % (record.photo.url,record.photo.url))
 
     def render_id (self,record):
-        return mark_safe('<a href="/test_edit/%s/%s"> <img src="/static/reload/img/icon-changelink.svg"/></a>' % (record.id,record.load))
+        return mark_safe('<a href=' +reverse("test_edit",args=[record.id,record.load])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     def render_load(self, record):
-        return mark_safe('<a href="/load_comment_test/%s"> <img src="/static/reload/img/search.svg"/></a>' % (record.load))
+        return mark_safe('<a href=' +reverse("load_comment_test",args=[record.load])+ '> <img src="/static/reload/img/search.svg"/></a>')
 
     class Meta:
         model = test
@@ -81,22 +77,20 @@ class TestTable(tables.Table):
         exclude = ('datemod',)
 
 
-
 class PowderTable(tables.Table):
     id = tables.Column(verbose_name='')
-    # id = tables.LinkColumn('powder_edit', args=[A('pk')])
     vendor = tables.Column()
     powder = tables.LinkColumn('load_by_powder', args=[A('pk')])
     no_loads = tables.Column(verbose_name=_('Elaboracji'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
-    def render_no_loads (self,record,column):
+    def render_no_loads (self,record):
         count = loads.objects.filter(powder=record).count()
         if count > 0:
             return mark_safe('<a href=' + reverse("load_by_powder", args=[record.id]) + '> %s &emsp; <img src="/static/reload/img/search.svg"/></a>' % (count))
         return mark_safe('—')
 
     def render_id (self,record):
-        return mark_safe('<a href="/powder_edit/%s"> <img src="/static/reload/img/icon-changelink.svg"/></a>' % (record.id))
+        return mark_safe('<a href=' +reverse("powder_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     class Meta:
         model = powder
@@ -106,14 +100,7 @@ class PowderTable(tables.Table):
 
 class BulletTable(tables.Table):
     id = tables.Column(verbose_name='')
-    # id = tables.LinkColumn('bullet_edit', args=[A('pk')])
-    caliber = tables.Column()
-    vendor = tables.Column()
     bullet = tables.LinkColumn('load_by_bullet', args=[A('pk')])
-    weight = tables.Column()
-    calibration = tables.Column()
-    length = tables.Column()
-    bc = tables.Column()
     no_loads = tables.Column(verbose_name=_('Elaboracji'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
     def render_no_loads (self,record):
@@ -123,11 +110,11 @@ class BulletTable(tables.Table):
         return mark_safe('—')
 
     def render_id (self,record):
-        return mark_safe('<a href="/bullet_edit/%s"> <img src="/static/reload/img/icon-changelink.svg"/></a>' % (record.id))
+        return mark_safe('<a href=' +reverse("bullet_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     class Meta:
         model = bullet
-        order_by = ('caliber','vendor','calibration','weight')
+        order_by = ('diameter','vendor','weight')
         exclude = ('date','datemod',)
 
 
@@ -138,13 +125,12 @@ class CaliberTable(tables.Table):
     no_loads = tables.Column(verbose_name=_('Elaboracji'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
     def render_id (self,record):
-        return mark_safe('<a href="/caliber_edit/%s"> <img src="/static/reload/img/icon-changelink.svg"/></a>' % (record.id))
+        return mark_safe('<a href=' +reverse("caliber_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     def render_no_loads (self,record):
         count = loads.objects.filter(caliber=record).count()
         if count > 0:
             return mark_safe('<a href=' + reverse("load_by_caliber", args=[record.id]) + '> %s &emsp; <img src="/static/reload/img/search.svg"/></a>' % (count))
-
         return mark_safe('—')
 
     class Meta:
@@ -152,3 +138,20 @@ class CaliberTable(tables.Table):
         order_by = ('caliber')
         exclude = ('date','datemod')
 
+class DiameterTable(tables.Table):
+    id = tables.Column(verbose_name='')
+    no_bullets = tables.Column(verbose_name=_(u'Pocisków'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
+
+    def render_id (self,record):
+        return mark_safe('<a href=' +reverse("diameter_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+
+    def render_no_bullets (self,record):
+        count = bullet.objects.filter(diameter=record).count()
+        if count > 0:
+            return mark_safe('%s' % (count))
+        return mark_safe('—')
+
+    class Meta:
+        model = diameter
+        order_by = ('diameter')
+        exclude = ('date','datemod')

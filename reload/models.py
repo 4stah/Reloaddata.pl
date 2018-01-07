@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 class caliber (models.Model):
     caliber = models.CharField(verbose_name=_("Kaliber"),max_length=20)
     comment = models.TextField(verbose_name=_("Komentarz"),max_length=125, blank=True, default='')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name=_("Właściciel"))
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name=_("Właściciel"))
     date = models.DateTimeField(verbose_name=_("Data"),auto_now_add=True)
     datemod = models.DateTimeField(verbose_name=_("Data Mod."),auto_now=True)
 
@@ -20,12 +20,25 @@ class caliber (models.Model):
 
 auditlog.register(caliber)
 
+class diameter (models.Model): #all bullets diameters
+    diameter = models.CharField(verbose_name=_("Kalibracja [in]"),max_length=5,unique=True, blank=False)
+    comment = models.TextField(verbose_name=_("Komentarz"),max_length=125, blank=True, default='')
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name=_("Właściciel"))
+    date = models.DateTimeField(verbose_name=_("Data"),auto_now_add=True)
+    datemod = models.DateTimeField(verbose_name=_("Data Mod."),auto_now=True)
+
+    def __unicode__(self):
+        return self.diameter
+    class Meta:
+        ordering = ['diameter']
+
+auditlog.register(diameter)
 
 class powder (models.Model):
     vendor = models.CharField(verbose_name=_("Producent"),max_length=20)
     powder = models.CharField(verbose_name=_("Proch"),max_length=20)
     comment = models.TextField(verbose_name=_("Komentarz"),max_length=125, blank=True, default='')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name=_("Właściciel"))
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name=_("Właściciel"))
     date = models.DateTimeField(verbose_name=_("Data"),auto_now_add=True)
     datemod = models.DateTimeField(verbose_name=_("Data Mod."),auto_now=True)
 
@@ -38,22 +51,23 @@ auditlog.register(powder)
 
 
 class bullet (models.Model):
-    caliber = models.ForeignKey(caliber, on_delete=models.CASCADE, verbose_name=_("Kaliber"))
+    # caliber = models.ForeignKey(caliber, on_delete=models.CASCADE, verbose_name=_("Kaliber"))
     vendor = models.CharField(verbose_name=_("Producent"), max_length=20)
     bullet = models.CharField(verbose_name=_("Pocisk"),max_length=20)
     weight = models.DecimalField(verbose_name=_("Waga [gr]"),max_digits=3, decimal_places=0)
-    calibration  = models.CharField(verbose_name=_("Kalibracja [in]"),max_length=5)
+    diameter = models.ForeignKey(diameter, on_delete=models.PROTECT, verbose_name=_("Kalibracja [in]"))
+    # calibration  = models.CharField(verbose_name=_("Kalibracja [in]"),max_length=5)
     length = models.DecimalField(verbose_name=_("Długość [mm]"),max_digits=5, decimal_places=2)
     bc = models.DecimalField(verbose_name=_("BC"),max_digits=5, decimal_places=3, null=True,blank=True)
     comment = models.TextField(verbose_name=_("Komentarz"),max_length=125, blank=True, default='')
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name=_("Właściciel"))
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name=_("Właściciel"))
     date = models.DateTimeField(verbose_name=_("Data"),auto_now_add=True)
     datemod = models.DateTimeField(verbose_name=_("Data Mod."),auto_now=True)
 
     def __unicode__(self):
-        return (self.vendor)+' ' +(self.bullet)+' '+str(self.weight)+'gr'
+        return (self.vendor)+' ' +(self.bullet)+' '+str(self.weight)+'gr' #TODO + ' (' + self.diameter + ')'
     class Meta:
-        ordering = ['vendor','calibration','weight']
+        ordering = ['vendor','diameter','weight']
 
 auditlog.register(bullet)
 
@@ -73,18 +87,18 @@ class score (models.Model):
 class loads (models.Model):
     date = models.DateTimeField(verbose_name=_("Data"),auto_now_add=True)
     datemod = models.DateTimeField(verbose_name=_("Data Mod."),auto_now=True)
-    caliber = models.ForeignKey(caliber, on_delete=models.CASCADE, verbose_name=_("Kaliber"))
+    caliber = models.ForeignKey(caliber, on_delete=models.PROTECT, verbose_name=_("Kaliber"))
     gun = models.CharField(verbose_name=_("Broń"),max_length=30, blank=True, default='')
-    bullet = models.ForeignKey(bullet, on_delete=models.CASCADE, verbose_name=_("Pocisk"))
-    powder = models.ForeignKey(powder, on_delete=models.CASCADE, verbose_name=_("Proch"))
+    bullet = models.ForeignKey(bullet, on_delete=models.PROTECT, verbose_name=_("Pocisk"))
+    powder = models.ForeignKey(powder, on_delete=models.PROTECT, verbose_name=_("Proch"))
     COL = models.DecimalField(verbose_name=_("COL [mm]"),max_digits=5, decimal_places=2)
     load = models.DecimalField(verbose_name=_("Naważka [gr]"),max_digits=5, decimal_places=2)
     crimp = models.DecimalField(verbose_name=_("Crimp [mm]"),max_digits=5, decimal_places=2, null=True,blank=True)
     prime = models.CharField(verbose_name=_("Spłonka"),max_length=16, blank=True, default='')
     case = models.CharField(verbose_name=_("Łuska"),max_length=16, blank=True, default='')
-    quality = models.ForeignKey(quality, on_delete=models.CASCADE,verbose_name=_("Przeznaczenie"))
+    quality = models.ForeignKey(quality, on_delete=models.PROTECT,verbose_name=_("Przeznaczenie"))
     votes = models.IntegerField(verbose_name=_("Głosy"),default=0)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name=_("Właściciel"))
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name=_("Właściciel"))
     def __unicode__(self):
         return str(self.id)
 
@@ -96,8 +110,8 @@ class comment (models.Model):
     datemod = models.DateTimeField(verbose_name=_("Data Mod."),auto_now=True)
     gun = models.CharField(verbose_name=_("Broń"),max_length=50, blank=True, default='')
     comment = models.TextField(verbose_name=_("Komentarz"),max_length=140, blank=False, default='')
-    score = models.ForeignKey(score, on_delete=models.CASCADE,verbose_name=_("Ocena"))
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name=_("Właściciel"))
+    score = models.ForeignKey(score, on_delete=models.PROTECT,verbose_name=_("Ocena"))
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name=_("Właściciel"))
     def __unicode__(self):
         return str(self.load)+' ' + self.comment
 
@@ -114,7 +128,7 @@ class test (models.Model):
     moa = models.DecimalField(verbose_name=_("Grupa [MOA]"),max_digits=3, decimal_places=1, blank=True,null=True)
     comment = models.TextField(verbose_name=_("Opis"),max_length=125, blank=True,null=True,default='')
     photo = models.ImageField(verbose_name=_("Zdjęcie"),upload_to="tests/",blank=True,null=True)
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE, verbose_name=_("Właściciel"))
+    user = models.ForeignKey('auth.User', on_delete=models.PROTECT, verbose_name=_("Właściciel"))
     def __unicode__(self):
         return str(self.id)+' ' + self.comment
 

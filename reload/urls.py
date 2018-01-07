@@ -46,6 +46,10 @@ urlpatterns = [
     url(r'^caliber_new/', views.caliber_new, name='caliber_new'),
     url(r'^caliber_edit/(?P<key>\d+)/', views.caliber_edit, name='caliber_edit'),
 
+    url(r'^diameters/', views.diameters, name='diameters'),
+    url(r'^diameter_new/', views.diameter_new, name='diameter_new'),
+    url(r'^diameter_edit/(?P<key>\d+)/', views.diameter_edit, name='diameter_edit'),
+
     url(r'^bullets/', views.BulletFilteredTable.as_view(), name='bullets'),
     url(r'^bullet_new/', views.bullet_new, name='bullet_new'),
     url(r'^bullet_edit/(?P<key>\d+)/', views.bullet_edit, name='bullet_edit'),

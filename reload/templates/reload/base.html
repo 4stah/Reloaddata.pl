@@ -30,6 +30,8 @@
     <div id="header">
         <div id="branding">
             {% block branding %}
+            <!--<h1 style="color:red"> <b><i>Maitenance break! DO NOT ENTER ANY DATA OR IT WILL BE LOST!</i></b></a></h1>-->
+
             <h1 id="site-name"><a href="{% url 'index' %}"><b><i>ReloadData.pl</i></b> {% trans '- baza elaboracji' %}</a></h1>
             {% endblock %}
         </div>
@@ -86,6 +88,7 @@
         <a href="{% url 'whats_new' %}">&rsaquo; {% trans 'Co nowego' %}</a>
         <a href="{% url 'loads' %}">&rsaquo; {% trans 'Elaboracje' %}</a>
         <a href="{% url 'calibers' %}">&rsaquo; {% trans 'Kalibry' %}</a>
+        <a href="{% url 'diameters' %}">&rsaquo; {% trans 'Kalibracje' %}</a>
         <a href="{% url 'bullets' %}">&rsaquo; {% trans 'Pociski' %}</a>
         <a href="{% url 'powders' %}">&rsaquo; {% trans 'Proch' %}</a>
 
