@@ -65,7 +65,7 @@ class bullet (models.Model):
     datemod = models.DateTimeField(verbose_name=_("Data Mod."),auto_now=True)
 
     def __unicode__(self):
-        return (self.vendor)+' ' +(self.bullet)+' '+str(self.weight)+'gr' #TODO + ' (' + self.diameter + ')'
+        return (self.vendor)+' ' +(self.bullet)+ ' ' + self.diameter.diameter + '/' +str(self.weight)+'gr'
     class Meta:
         ordering = ['vendor','diameter','weight']
 

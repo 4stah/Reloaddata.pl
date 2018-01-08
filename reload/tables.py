@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
+import sys
 import django_tables2 as tables
+
 from django_tables2.utils import A
 from django.utils.safestring import mark_safe
 from .models import *
@@ -14,8 +16,11 @@ class LoadTable_templ(tables.Table):
     date = tables.DateTimeColumn(verbose_name='Data', format='d-M H:i')
     no_comments = tables.Column(verbose_name=_('Komentarze / Testy'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
+    def before_render(self, request):
+        self.request = request
+
     def render_id (self,record):
-        return mark_safe('<a href=' +reverse("load_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+        return mark_safe('<a href=' +reverse("load_edit",args=[record.id])+ '?next=%s> <img src="/static/reload/img/icon-changelink.svg"/></a>' % self.request.get_full_path())
 
     def render_no_comments (self,record,column):
         count_c = comment.objects.filter(load=record.id).count()
@@ -43,8 +48,11 @@ class CommentTable(tables.Table):
     date = tables.DateTimeColumn(verbose_name=_('Data'),format='d-M H:i')
     comment = tables.Column(verbose_name=_('Komentarz'), attrs={'td' : {'style' : 'max-width:650px; word-wrap:break-word;'}}) #### to CSS? class name?>
 
+    def before_render(self, request):
+        self.request = request
+
     def render_id (self,record):
-        return mark_safe('<a href=' +reverse("comment_edit",args=[record.id,record.load])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+        return mark_safe('<a href=' +reverse("comment_edit",args=[record.id,record.load])+ '?next=%s> <img src="/static/reload/img/icon-changelink.svg"/></a>' % self.request.get_full_path())
 
     def render_load (self,record):
         return mark_safe('<a href=' +reverse("load_comment_test",args=[record.load])+ '> <img src="/static/reload/img/search.svg"/></a>')
@@ -62,11 +70,14 @@ class TestTable(tables.Table):
     # load = tables.LinkColumn('load_comment_test', args=[A('load')],verbose_name='Elaboracja')
     comment = tables.Column(verbose_name=_('Komentarz'),attrs={'td' : {'style' : 'max-width:320px; word-wrap:break-word;'}}) #### to CSS? class name?>
 
+    def before_render(self, request):
+        self.request = request
+
     def render_photo (self,record):
         return mark_safe('<a href="%s"> <img src="%s" height="50px"/></a>' % (record.photo.url,record.photo.url))
 
     def render_id (self,record):
-        return mark_safe('<a href=' +reverse("test_edit",args=[record.id,record.load])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+        return mark_safe('<a href=' +reverse("test_edit",args=[record.id,record.load])+ '?next=%s> <img src="/static/reload/img/icon-changelink.svg"/></a>' % self.request.get_full_path())
 
     def render_load(self, record):
         return mark_safe('<a href=' +reverse("load_comment_test",args=[record.load])+ '> <img src="/static/reload/img/search.svg"/></a>')
@@ -83,6 +94,9 @@ class PowderTable(tables.Table):
     powder = tables.LinkColumn('load_by_powder', args=[A('pk')])
     no_loads = tables.Column(verbose_name=_('Elaboracji'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
+    def before_render(self, request):
+        self.request = request
+
     def render_no_loads (self,record):
         count = loads.objects.filter(powder=record).count()
         if count > 0:
@@ -90,7 +104,8 @@ class PowderTable(tables.Table):
         return mark_safe('—')
 
     def render_id (self,record):
-        return mark_safe('<a href=' +reverse("powder_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+        return mark_safe('<a href=' + reverse("powder_edit", args=[record.id])  + '?next=%s> <img src="/static/reload/img/icon-changelink.svg"/></a>' % self.request.get_full_path())
+        # return mark_safe('<a href=' +reverse("powder_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
 
     class Meta:
         model = powder
@@ -103,6 +118,9 @@ class BulletTable(tables.Table):
     bullet = tables.LinkColumn('load_by_bullet', args=[A('pk')])
     no_loads = tables.Column(verbose_name=_('Elaboracji'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
+    def before_render(self, request):
+        self.request = request
+
     def render_no_loads (self,record):
         count = loads.objects.filter(bullet=record).count()
         if count > 0:
@@ -110,7 +128,7 @@ class BulletTable(tables.Table):
         return mark_safe('—')
 
     def render_id (self,record):
-        return mark_safe('<a href=' +reverse("bullet_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+        return mark_safe('<a href=' +reverse("bullet_edit",args=[record.id])+ '?next=%s> <img src="/static/reload/img/icon-changelink.svg"/></a>' % self.request.get_full_path())
 
     class Meta:
         model = bullet
@@ -124,8 +142,11 @@ class CaliberTable(tables.Table):
     caliber = tables.LinkColumn('load_by_caliber', args=[A('pk')])
     no_loads = tables.Column(verbose_name=_('Elaboracji'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
+    def before_render(self, request):
+        self.request = request
+
     def render_id (self,record):
-        return mark_safe('<a href=' +reverse("caliber_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+        return mark_safe('<a href=' +reverse("caliber_edit",args=[record.id])+ '?next=%s> <img src="/static/reload/img/icon-changelink.svg"/></a>' % self.request.get_full_path())
 
     def render_no_loads (self,record):
         count = loads.objects.filter(caliber=record).count()
@@ -142,8 +163,11 @@ class DiameterTable(tables.Table):
     id = tables.Column(verbose_name='')
     no_bullets = tables.Column(verbose_name=_(u'Pocisków'),empty_values=(),orderable=False) #empty_values - zeby nie pomijal w render_FOO
 
+    def before_render(self, request):
+        self.request = request
+
     def render_id (self,record):
-        return mark_safe('<a href=' +reverse("diameter_edit",args=[record.id])+ '> <img src="/static/reload/img/icon-changelink.svg"/></a>')
+        return mark_safe('<a href=' +reverse("diameter_edit",args=[record.id])+ '?next=%s> <img src="/static/reload/img/icon-changelink.svg"/></a>' % self.request.get_full_path())
 
     def render_no_bullets (self,record):
         count = bullet.objects.filter(diameter=record).count()

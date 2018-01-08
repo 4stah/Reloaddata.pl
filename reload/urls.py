@@ -55,6 +55,8 @@ urlpatterns = [
     url(r'^bullet_edit/(?P<key>\d+)/', views.bullet_edit, name='bullet_edit'),
 
     url(r'^powders/', views.PowderFilteredTable.as_view(), name='powders'),
+    # url(r'^powders/', views.powders, name='powders'),
+
     url(r'^powder_new/', views.powder_new, name='powder_new'),
     url(r'^powder_edit/(?P<key>\d+)/', views.powder_edit, name='powder_edit'),
 ]

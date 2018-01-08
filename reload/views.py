@@ -20,7 +20,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from django.views.generic.edit import FormView
 
-
 from .models import *
 from .forms import *
 from .tables import *
@@ -191,15 +190,15 @@ def load_new(request):
 #---------------------------
 def load_edit(request,key):
     if not request.user.is_authenticated:
-        return redirect('/loginuser?next=%s' % request.path)
+        return redirect('/loginuser?next=%s?next=%s' % (request.path,request.get_full_path().split('?next=')[1]))
     instance = loads.objects.get(id=key)
     if request.method == 'POST':
         if (not instance.user == request.user) and (not request.user.is_superuser):
-            return redirect('loads')
+            return redirect(request.get_full_path().split('?next=')[1])
         form = LoadForm(request.POST,instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('loads')
+            return redirect(request.get_full_path().split('?next=')[1])
     else:
         form = LoadForm(instance=instance)
     return render(request, 'reload/edit.html', {'title':_(u'Edycja elaboracji'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
@@ -207,16 +206,16 @@ def load_edit(request,key):
 #---------------------------
 def comment_edit(request,key,id_load):
     if not request.user.is_authenticated:
-        return redirect('/loginuser?next=%s' % request.path)
+        return redirect('/loginuser?next=%s?next=%s' % (request.path,request.get_full_path().split('?next=')[1]))
     instance = comment.objects.get(id=key)
     if request.method == 'POST':
         if (not instance.user == request.user) and (not request.user.is_superuser):
-            return redirect('load_comment_test',id_load)
+            return redirect(request.get_full_path().split('?next=')[1])
 
         form = CommentForm(request.POST,instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('load_comment_test',id_load)
+            return redirect(request.get_full_path().split('?next=')[1])
     else:
         form = CommentForm(instance=instance)
     return render(request, 'reload/edit.html', {'title':_(u'Edycja komentarza'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
@@ -271,15 +270,15 @@ def test_new(request,key):
 #---------------------------
 def test_edit(request,key,id_load):
     if not request.user.is_authenticated:
-        return redirect('/loginuser?next=%s' % request.path)
+        return redirect('/loginuser?next=%s?next=%s' % (request.path,request.get_full_path().split('?next=')[1]))
     instance = test.objects.get(id=key)
     if request.method == 'POST':
         if (not instance.user == request.user) and (not request.user.is_superuser):
-            return redirect('load_comment_test',id_load)
+            return redirect(request.get_full_path().split('?next=')[1],id_load)
         form = TestForm(request.POST,request.FILES,instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('load_comment_test',id_load)
+            return redirect(request.get_full_path().split('?next=')[1])
     else:
         form = TestForm(instance=instance)
     return render(request, 'reload/edit.html', {'title':_(u'Edycja testu'),'editable': ((instance.user == request.user) or (request.user.is_superuser)),'form': form})
@@ -325,9 +324,9 @@ def load_by_powder(request,key):
 
 
 ############################
-#---------------------------
+# ---------------------------
 # def powders(request):
-#     table = PowderTable(powder.objects.all())
+#     table = PowderFilteredTable(powder.objects.all())
 #     RequestConfig(request).configure(table) # żeby reagował na sortowanie
 #     return render(request, 'reload/view.html', {'title':'Baza prochów','table': table})
 
@@ -349,24 +348,24 @@ def powder_new(request):
 #---------------------------
 def powder_edit(request,key):
 
-    # print("----" + request.path, sys.stderr) #to powder_edit
     if not request.user.is_authenticated:
-        return redirect('/loginuser?next=%s' % request.path)
+        return redirect('/loginuser?next=%s?next=%s' % (request.path,request.get_full_path().split('?next=')[1]))
     instance = powder.objects.get(id=key)
     editable = (instance.user == request.user) or (request.user.is_superuser) #rekord użytkownika
     update_disabled = (loads.objects.filter(powder = instance).exclude(user = instance.user).count()>0) and (not request.user.is_superuser) # uniemizliwia edytowanie jesli slownik zostal uzyty przez innych
 
     if request.method == 'POST':
+        # print("--path-- " + request.get_full_path(), sys.stderr)
+        # print("--next1-- " + request.GET.get("next"), sys.stderr)
+        # print("--next2-- " + request.get_full_path().split('?next=')[1], sys.stderr)
+        # print("--ref-- " + request.META.get('HTTP_REFERER'), sys.stderr)
         if (not editable or update_disabled):
-            return redirect('powders')
+            return redirect(request.get_full_path().split('?next=')[1])
         form = PowderForm(request.POST,instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('powders')
-            # return HttpResponseRedirect(r)
+            return redirect(request.get_full_path().split('?next=')[1])
     else:
-        # r = request.META.get('HTTP_REFERER')
-        # print("----" + r, sys.stderr)
         form = PowderForm(instance=instance)
 
     return render(request, 'reload/edit.html', {'title':_(u'Edycja prochu'),'editable': editable,'update_disabled':update_disabled,'form': form})
@@ -395,7 +394,7 @@ def diameter_new(request):
 #---------------------------
 def diameter_edit(request,key):
     if not request.user.is_authenticated:
-        return redirect('/loginuser?next=%s' % request.path)
+        return redirect('/loginuser?next=%s?next=%s' % (request.path,request.get_full_path().split('?next=')[1]))
     instance = diameter.objects.get(id=key)
     editable = (instance.user == request.user) or (request.user.is_superuser) #rekord użytkownika
     update_disabled = (bullet.objects.filter(diameter = instance).exclude(user = instance.user).count()>0) and (not request.user.is_superuser)
@@ -403,11 +402,11 @@ def diameter_edit(request,key):
 
     if request.method == 'POST':
         if (not editable or update_disabled):
-            return redirect('diameters')
+            return redirect(request.get_full_path().split('?next=')[1])
         form = DiameterForm(request.POST,instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('diameters')
+            return redirect(request.get_full_path().split('?next=')[1])
     else:
         form = DiameterForm(instance=instance)
 
@@ -438,7 +437,7 @@ def bullet_new(request):
 #---------------------------
 def bullet_edit(request,key):
     if not request.user.is_authenticated:
-        return redirect('/loginuser?next=%s' % request.path)
+        return redirect('/loginuser?next=%s?next=%s' % (request.path,request.get_full_path().split('?next=')[1]))
     instance = bullet.objects.get(id=key)
     editable = (instance.user == request.user) or (request.user.is_superuser)  # rekord użytkownika
     update_disabled = (loads.objects.filter(bullet=instance).exclude(user=instance.user).count() > 0) and (not request.user.is_superuser)
@@ -446,11 +445,11 @@ def bullet_edit(request,key):
 
     if request.method == 'POST':
         if (not editable or update_disabled):
-            return redirect('bullets')
+            return redirect(request.get_full_path().split('?next=')[1])
         form = BulletForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('bullets')
+            return redirect(request.get_full_path().split('?next=')[1])
     else:
         form = BulletForm(instance=instance)
 
@@ -482,7 +481,7 @@ def caliber_new(request):
 #---------------------------
 def caliber_edit(request,key):
     if not request.user.is_authenticated:
-        return redirect('/loginuser?next=%s' % request.path)
+        return redirect('/loginuser?next=%s?next=%s' % (request.path,request.get_full_path().split('?next=')[1]))
     instance = caliber.objects.get(id=key)
     editable = (instance.user == request.user) or (request.user.is_superuser)  # rekord użytkownika
     update_disabled = (loads.objects.filter(caliber=instance).exclude(user=instance.user).count() > 0) and (not request.user.is_superuser)
@@ -490,11 +489,11 @@ def caliber_edit(request,key):
 
     if request.method == 'POST':
         if (not editable or update_disabled):
-            return redirect('calibers')
+            return redirect(request.get_full_path().split('?next=')[1])
         form = CaliberForm(request.POST, instance=instance)
         if form.is_valid():
             form.save()
-            return redirect('calibers')
+            return redirect(request.get_full_path().split('?next=')[1])
     else:
         form = CaliberForm(instance=instance)
 

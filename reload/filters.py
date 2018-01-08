@@ -8,7 +8,7 @@ class LoadFilter(django_filters.FilterSet):
     user = django_filters.ChoiceFilter(choices=loads.objects.order_by('user__username').values_list('user__pk','user__username').distinct())
     class Meta:
         model = loads
-        fields = ['caliber', 'powder', 'user']
+        fields = ['caliber', 'powder', 'quality', 'user']
 
 class BulletFilter(django_filters.FilterSet):
     diameter = django_filters.ChoiceFilter(choices=bullet.objects.order_by('diameter__diameter').values_list('diameter__pk','diameter__diameter').distinct())

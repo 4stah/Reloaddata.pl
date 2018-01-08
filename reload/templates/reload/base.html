@@ -39,9 +39,8 @@
         {% block usertools %}
         {% get_language_info_list for LANGUAGES as languages %}
         {% for language in languages %}
-            <!-- <a href="{% change_language language.code %}"> {{ language.name }}</a> /!-->
             <a style="float:left;margin: 6px 10px;"
-               link rel="alternate" href="{% change_language language.code %}" hreflang="{{ language.code }}">
+               link rel="alternate" hreflang="{{ language.code }}" href="{% change_language language.code %}" >
                 <img src="/static/reload/img/{{ language.code }}.png" height="20" width="20"></a>
         {% endfor %}
 
